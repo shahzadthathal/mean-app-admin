@@ -1,0 +1,66 @@
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <div nav-bar-directive></div>   
+
+
+        <div id="page-wrapper">
+           
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Profile Manager </h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+
+
+      
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-12 lead">{{profileDetail.fname}} {{profileDetail.lname}}<hr></div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <img class="img-circle avatar avatar-original" style="-webkit-user-select:none; 
+              display:block; margin:auto;"  ng-src="{{imageUrl}}{{profileDetail.image}}" height="100" width="100" />
+
+            </div>
+            <div class="col-md-8">
+              <div class="row">
+               
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <span class="text-muted">Email:</span> {{profileDetail.email}}<br>
+                  <span class="text-muted">Phone:</span> {{profileDetail.phone}}<br>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <hr><button class="btn btn-default pull-right" ng-click="showModal()"><i class="glyphicon glyphicon-pencil"></i> Edit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+           
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->

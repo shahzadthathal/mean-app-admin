@@ -1,0 +1,58 @@
+
+
+<div class="modal-header alert-info">
+<h4 class="modal-title">Blog Category...</h4>
+</div>
+<div class="modal-body">
+
+
+<form name="$parent.blogCategoryForm" novalidate>
+
+
+<div class="form-group" ng-class="{ 'has-error' : blogCategoryForm.title.$invalid && !blogCategoryForm.title.$pristine }">
+    <label>Blog Cateogry Title</label>
+    <input type="text" name="title" class="form-control" ng-model="blogcategory.title" ng-minlength="3" ng-maxlength="50" required>
+    <p ng-show="blogCategoryForm.title.$invalid && !blogCategoryForm.title.$pristine" class="help-block">Blog Category Title is required.</p>
+</div>
+
+
+<div class="form-group" ng-class="{ 'has-error' : blogCategoryForm.slug.$invalid && !blogCategoryForm.slug.$pristine }">
+    <label>Blog Category Slug</label>
+    <input type="text" name="slug" class="form-control" ng-model="blogcategory.slug" ng-minlength="3" ng-maxlength="50" required>
+    <p ng-show="blogCategoryForm.slug.$invalid && !blogCategoryForm.slug.$pristine" class="help-block">Blog Category Slug is required.</p>
+    <p ng-show="blogCategoryForm.slug.$error.minlength" class="help-block">Blog Category Slug is too short.</p>
+    <p ng-show="blogCategoryForm.slug.$error.maxlength" class="help-block">Blog Category Slug is too long.</p>
+</div>
+
+
+<div class="form-group" ng-class="{ 'has-error' : blogCategoryForm.status.$invalid && !blogCategoryForm.status.$pristine }">
+    <label>Blog Category Status</label>
+  <select name="status" class="form-control" ng-model="blogcategory.status">
+    <option value="1" ng-selected="true">Active</option>
+    <option value="0">In Active</option>
+ </select>
+ <p ng-show="blogCategoryForm.status.$invalid && !blogCategoryForm.status.$pristine" class="help-block">Blog Category Status is required.</p>
+ </div>
+
+
+<div class="form-group" ng-class="{ 'has-error' : blogCategoryForm.description.$invalid && !blogCategoryForm.description.$pristine }">
+    <label>Blog Category Description</label>
+    <textarea name="description" class="form-control" ng-model="blogcategory.description" cols="50" rows="5" ></textarea>
+    <p ng-show="blogCategoryForm.description.$invalid && !blogCategoryForm.description.$pristine" class="help-block">Blog Category Description is required.</p>
+</div>
+
+
+</form>
+
+</div>
+
+
+
+<div class="modal-footer">
+
+<button type="submit" class="btn btn-primary" ng-disabled="blogCategoryForm.$invalid" 
+ng-click="submitForm(blogCategoryForm)">Submit</button>
+<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+
+</div>
+

@@ -1,0 +1,67 @@
+
+
+<div class="modal-header alert-info">
+<h4 class="modal-title">Profile...</h4>
+</div>
+<div class="modal-body">
+
+
+<form name="$parent.profileForm" novalidate  enctype="multipart/form-data">
+
+
+<div class="form-group" ng-class="{ 'has-error' : profileForm.fname.$invalid && !profileForm.fname.$pristine }">
+    <label>First Name</label>
+    <input type="text" name="fname" class="form-control" ng-model="profile.fname" ng-minlength="3" ng-maxlength="50" required>
+    <p ng-show="profileForm.fname.$invalid && !profileForm.fname.$pristine" class="help-block">First name is required.</p>
+</div>
+
+
+<div class="form-group" ng-class="{ 'has-error' : profileForm.lname.$invalid && !profileForm.lname.$pristine }">
+    <label>Last Name</label>
+    <input type="text" name="lname" class="form-control" ng-model="profile.lname" ng-minlength="3" ng-maxlength="50" required>
+    <p ng-show="profileForm.lname.$invalid && !profileForm.lname.$pristine" class="help-block">Last name is required.</p>
+    <p ng-show="profileForm.lname.$error.minlength" class="help-block">Last name is too short.</p>
+    <p ng-show="profileForm.lname.$error.maxlength" class="help-block">Last name is too long.</p>
+</div>
+
+
+
+<div class="form-group" ng-class="{ 'has-error' : profileForm.email.$invalid && !profileForm.email.$pristine }">
+    <label>Email</label>
+    <input type="text" name="email" class="form-control" ng-model="profile.email" ng-minlength="3" ng-maxlength="50" required>
+    <p ng-show="profileForm.email.$invalid && !profileForm.email.$pristine" class="help-block">Email is required.</p>
+    
+</div>
+
+
+<div class="form-group" ng-class="{ 'has-error' : profileForm.phone.$invalid && !profileForm.phone.$pristine }">
+    <label>Phone</label>
+    <input type="text" name="phone" class="form-control" ng-model="profile.phone" ng-minlength="3" ng-maxlength="50" required>
+    <p ng-show="profileForm.phone.$invalid && !profileForm.phone.$pristine" class="help-block">Phone is required.</p>
+    
+</div>
+
+
+
+
+<div class="form-group" ng-class="{ 'has-error' : profileForm.image.$invalid && !profileForm.image.$pristine }">
+    <label>Profile Image</label>
+  <input type="file" name="image"  id="image" file-model="profile.image" accept="image/*"  onchange="angular.element(this).scope().uploadFile(this.files)"/>
+  <p ng-show="profileForm.image.$invalid && !profileForm.image.$pristine" class="help-block">Profile Image is required.</p>
+</div>
+
+
+</form>
+
+</div>
+
+
+
+<div class="modal-footer">
+
+<button type="submit" class="btn btn-primary" ng-disabled="profileForm.$invalid" 
+ng-click="submitForm(profileForm)">Submit</button>
+<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+
+</div>
+

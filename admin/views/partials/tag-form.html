@@ -1,0 +1,41 @@
+
+
+<div class="modal-header alert-info">
+<h4 class="modal-title">Tags...</h4>
+</div>
+<div class="modal-body">
+
+
+<form name="$parent.tagForm" novalidate>
+
+
+<div class="form-group" ng-class="{ 'has-error' : tagForm.title.$invalid && !tagForm.title.$pristine }">
+    <label>Page Title</label>
+    <input type="text" name="title" class="form-control" ng-model="tag.title" ng-minlength="3" ng-maxlength="50" required>
+    <p ng-show="tagForm.title.$invalid && !tagForm.title.$pristine" class="help-block">Page Title is required.</p>
+</div>
+
+
+
+
+<div class="form-group" ng-class="{ 'has-error' : tagForm.description.$invalid && !tagForm.description.$pristine }">
+    <label>Tag Description</label>
+    <textarea name="description" class="form-control" ng-model="tag.description" id="description" cols="50" rows="5" required></textarea>
+    <p ng-show="tagForm.description.$invalid && !tagForm.description.$pristine" class="help-block">Tag Description is required.</p>
+</div>
+
+
+</form>
+
+</div>
+
+
+
+<div class="modal-footer">
+
+<button type="submit" class="btn btn-primary" ng-disabled="tagForm.$invalid" 
+ng-click="submitForm(tagForm)">Submit</button>
+<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+
+</div>
+

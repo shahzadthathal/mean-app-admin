@@ -1,0 +1,103 @@
+
+
+<div class="modal-header alert-info">
+<h4 class="modal-title">Product...</h4>
+</div>
+<div class="modal-body">
+
+
+<form name="$parent.productForm" novalidate  enctype="multipart/form-data">
+
+
+<div class="form-group" ng-class="{ 'has-error' : productForm.title.$invalid && !productForm.title.$pristine }">
+    <label>Product Title</label>
+    <input type="text" name="title" class="form-control" ng-model="product.title" ng-minlength="3" ng-maxlength="50" required>
+    <p ng-show="productForm.title.$invalid && !productForm.title.$pristine" class="help-block">Product Title is required.</p>
+</div>
+
+
+<div class="form-group" ng-class="{ 'has-error' : productForm.slug.$invalid && !productForm.slug.$pristine }">
+    <label>Product Slug</label>
+    <input type="text" name="slug" class="form-control" ng-model="product.slug" ng-minlength="3" ng-maxlength="50" required>
+    <p ng-show="productForm.slug.$invalid && !productForm.slug.$pristine" class="help-block">Product Slug is required.</p>
+    <p ng-show="productForm.slug.$error.minlength" class="help-block">Product Slug is too short.</p>
+    <p ng-show="productForm.slug.$error.maxlength" class="help-block">Product Slug is too long.</p>
+</div>
+
+ 
+<div class="form-group" ng-class="{ 'has-error' : productForm.sale_price.$invalid && !productForm.sale_price.$pristine }">
+    <label>Sale Price</label>
+    <input type="number" name="sale_price" class="form-control" ng-model="product.sale_price" >
+    <p ng-show="productForm.sale_price.$invalid && !productForm.sale_price.$pristine" class="help-block">Product Sale Price valid is required.</p>
+</div>
+
+
+
+<div class="form-group" ng-class="{ 'has-error' : productForm.general_price.$invalid && !productForm.general_price.$pristine }">
+    <label>General Price</label>
+    <input type="number" name="general_price" class="form-control" ng-model="product.general_price" >
+    <p ng-show="productForm.general_price.$invalid && !productForm.general_price.$pristine" class="help-block">Product General Price valid is required.</p>
+</div>
+
+
+<div class="form-group" ng-class="{ 'has-error' : productForm.tags.$invalid && !productForm.tags.$pristine }">
+ <label>Product Tags</label>
+<select name="tags" class="form-control" id="tags" ng-model="product.tags" required multiple>
+    <option ng-repeat="tag in tagList" value="{{tag.title}}">
+    {{tag.title}}</option>
+</select>
+ <p ng-show="productForm.tags.$invalid && !productForm.tags.$pristine" class="help-block">Product 
+ Tags are required.</p>
+</div>
+
+
+
+
+<div class="form-group" ng-class="{ 'has-error' : productForm.status.$invalid && !productForm.status.$pristine }">
+    <label>Product Status</label>
+  <select name="status" class="form-control" id="status" ng-model="product.status">
+    <option value="1" ng-selected="true">Active</option>
+    <option value="0">In Active</option>
+ </select>
+ <p ng-show="productForm.status.$invalid && !productForm.status.$pristine" class="help-block">Product Status is required.</p>
+ </div>
+
+<div class="form-group" ng-class="{ 'has-error' : productForm.category.$invalid && !productForm.category.$pristine }">
+ <label>Product Category</label>
+<select name="category" class="form-control" id="category" ng-model="product.category" required>
+    <option ng-repeat="category in productCatsList" value="{{category._id}}">
+    {{category.title}}</option>
+</select>
+ <p ng-show="productForm.category.$invalid && !productForm.category.$pristine" class="help-block">Product Category is required.</p>
+</div>
+
+
+<div class="form-group" ng-class="{ 'has-error' : productForm.description.$invalid && !productForm.description.$pristine }">
+    <label>Product Description</label>
+    <textarea name="description" class="form-control" ng-model="product.description" id="description" cols="50" rows="5" required></textarea>
+    <p ng-show="productForm.description.$invalid && !productForm.description.$pristine" class="help-block">Product Description is required.</p>
+</div>
+
+
+<div class="form-group" ng-class="{ 'has-error' : productForm.image.$invalid && !productForm.image.$pristine }">
+    <label>Product Image</label>
+  <input type="file" name="image"  id="image" file-model="product.image" accept="image/*"  onchange="angular.element(this).scope().uploadFile(this.files)"/>
+  <p ng-show="productForm.image.$invalid && !productForm.image.$pristine" class="help-block">Product Image is required.</p>
+</div>
+
+
+
+</form>
+
+</div>
+
+
+
+<div class="modal-footer">
+
+<button type="submit" class="btn btn-primary" ng-disabled="productForm.$invalid" 
+ng-click="submitForm(productForm)">Submit</button>
+<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+
+</div>
+

@@ -1,0 +1,76 @@
+
+
+<div class="modal-header alert-info">
+<h4 class="modal-title">Blog...</h4>
+</div>
+<div class="modal-body">
+
+
+<form name="$parent.blogForm" novalidate  enctype="multipart/form-data">
+
+
+<div class="form-group" ng-class="{ 'has-error' : blogForm.title.$invalid && !blogForm.title.$pristine }">
+    <label>Blog Title</label>
+    <input type="text" name="title" class="form-control" ng-model="blog.title" ng-minlength="3" ng-maxlength="50" required>
+    <p ng-show="blogForm.title.$invalid && !blogForm.title.$pristine" class="help-block">Blog Title is required.</p>
+</div>
+
+
+<div class="form-group" ng-class="{ 'has-error' : blogForm.slug.$invalid && !blogForm.slug.$pristine }">
+    <label>Blog Slug</label>
+    <input type="text" name="slug" class="form-control" ng-model="blog.slug" ng-minlength="3" ng-maxlength="50" required>
+    <p ng-show="blogForm.slug.$invalid && !blogForm.slug.$pristine" class="help-block">Blog Slug is required.</p>
+    <p ng-show="blogForm.slug.$error.minlength" class="help-block">Blog Slug is too short.</p>
+    <p ng-show="blogForm.slug.$error.maxlength" class="help-block">Blog Slug is too long.</p>
+</div>
+ 
+
+<div class="form-group" ng-class="{'has-error':blogForm.tags.$invalid && !blogForm.tags.$pristine }">
+ <label>Blog Tags</label>
+<select name="tags" class="form-control" id="tags" ng-model="blog.tags" required multiple>
+    <option ng-repeat="tag in tagList" value="{{tag.title}}">
+    {{tag.title}}</option>
+</select>
+ <p ng-show="blogForm.tags.$invalid && !blogForm.tags.$pristine" class="help-block">Product 
+ Tags are required.</p>
+</div>
+
+ <div class="form-group" ng-class="{ 'has-error' : blogForm.category.$invalid && !blogForm.category.$pristine }">
+ <label>Blog Category</label>
+<select name="category" class="form-control" id="category" ng-model="blog.category" required="">
+    <option ng-repeat="category in blogCatsList" value="{{category._id}}">
+    {{category.title}}</option>
+</select>
+ <p ng-show="blogForm.category.$invalid && !blogForm.category.$pristine" class="help-block">Blog Category is required.</p>
+</div>
+
+
+<div class="form-group" ng-class="{ 'has-error' : blogForm.description.$invalid && !blogForm.description.$pristine }">
+    <label>Blog Description</label>
+    <textarea name="description" class="form-control" ng-model="blog.description" cols="50" rows="5" ></textarea>
+    <p ng-show="blogForm.description.$invalid && !blogForm.description.$pristine" class="help-block">Blog Description is required.</p>
+</div>
+
+
+<div class="form-group" ng-class="{ 'has-error' : blogForm.image.$invalid && !blogForm.image.$pristine }">
+    <label>Blog Image</label>
+  <input type="file" name="image"  id="image" file-model="blog.image" accept="image/*"  onchange="angular.element(this).scope().uploadFile(this.files)"/>
+  <p ng-show="blogForm.image.$invalid && !blogForm.image.$pristine" class="help-block">Blog Image is required.</p>
+</div>
+
+
+
+</form>
+
+</div>
+
+
+
+<div class="modal-footer">
+
+<button type="submit" class="btn btn-primary" ng-disabled="blogForm.$invalid" 
+ng-click="submitForm(blogForm)">Submit</button>
+<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+
+</div>
+

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html ng-app="adminApp">
+<head>    
+<meta name="viewport" content="width=device-width, user-scalable=no">
+
+<title>Web Shop Admin</title>
+
+<link href="/js/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- <link href="/js/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+ -->
+
+<link href="/js/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+
+
+<link href="/js/theme/dist/css/sb-admin-2.css" rel="stylesheet">
+<link href="/js/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link rel='stylesheet' href='/js/bower_components/textAngular/dist/textAngular.css'>
+
+<link rel='stylesheet' href='/js/bower_components/angular-loading-bar/build/loading-bar.min.css' type='text/css' media='all' />
+
+</head>
+<body>
+
+
+	<span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
+
+      <!-- Load all templates inside this ng-view -->
+      <div ng-view></div>     
+        
+
+
+</body>
+
+ <script src="/js/bower_components/jquery/dist/jquery.js"></script>
+<script src="/js/bower_components/angular/angular.js"></script>
+<script src="/js/bower_components/angular-route/angular-route.js"></script>
+<script src="/js/bower_components/angular-animate/angular-animate.js"></script>
+<script src="/js/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script src="/js/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <script src="/js/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+ <script src="/js/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+ <script src="/js/bower_components/angular-datatables/dist/angular-datatables.min.js"></script> 
+ <script src="/js/bower_components/spin.js/spin.js"></script>
+ <script src="/js/bower_components/angular-spinner/angular-spinner.js"></script>
+
+
+<script src='/js/bower_components/textAngular/dist/textAngular-rangy.min.js'></script>
+<script src='/js/bower_components/textAngular/dist/textAngular-sanitize.min.js'></script>
+<script src='/js/bower_components/textAngular/dist/textAngular.min.js'></script>
+
+<!-- https://github.com/chieffancypants/angular-loading-bar -->
+<script src='/js/bower_components/angular-loading-bar/build/loading-bar.min.js'></script>
+
+<!-- <script src="/js/bower_components/metisMenu/dist/metisMenu.js"></script> -->
+
+
+<!-- <script src="/js/theme/dist/js/sb-admin-2.js"></script> -->
+
+<!-- App -->
+<script src="js/app.js"></script>
+
+<!--Controllers-->
+<script src="js/controllers/login-controller.js"></script>
+<script src="js/controllers/main-controller.js"></script>
+<script src="js/controllers/product-controller.js"></script>
+<script src="js/controllers/product-category-controller.js"></script>
+<script src="js/controllers/blog-controller.js"></script>
+<script src="js/controllers/blog-category-controller.js"></script>
+<script src="js/controllers/tag-controller.js"></script>
+<script src="js/controllers/page-controller.js"></script>
+<script src="js/controllers/profile-controller.js"></script>
+<script src="js/controllers/logout-controller.js"></script>
+
+<!-- Services-->
+<script src="js/services/user-service.js"></script>
+<script src="js/services/product-service.js"></script>
+<script src="js/services/product-category-service.js"></script>
+<script src="js/services/blog-service.js"></script>
+<script src="js/services/blog-category-service.js"></script>
+<script src="js/services/tag-service.js"></script>
+<script src="js/services/page-service.js"></script>
+
+<!-- Directives-->
+<script src="js/directives/nav-bar-directive.js"></script>
+
+<!-- Interceptors-->
+<script src="js/interceptors/auth-interceptor.js"></script>
+</html>

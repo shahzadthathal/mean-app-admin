@@ -1,0 +1,33 @@
+{
+  "name": "ecommerce-app-server",
+  "version": "1.0.0",
+  "description": "Ecommerce App Server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/shahzadthathal/ecommerce-app-admin.git"
+  },
+  "author": "Muhammad Shahzad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shahzadthathal/ecommerce-app-admin/issues"
+  },
+  "homepage": "https://github.com/shahzadthathal/ecommerce-app-admin#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "connect-busboy": "0.0.2",
+    "crypto": "0.0.3",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "express-jwt": "^3.3.0",
+    "fs": "0.0.2",
+    "jsonwebtoken": "^5.7.0",
+    "method-override": "^2.3.5",
+    "mongoose": "^4.4.6",
+    "nodemailer": "^2.3.0",
+    "promise": "^7.1.1"
+  }
+}
