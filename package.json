@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/shahzadthathal/ecommerce-app-admin.git"
+    "url": "git+ssh://git@github.com/shahzadthathal/mean-app-admin.git"
   },
   "author": "Muhammad Shahzad",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shahzadthathal/ecommerce-app-admin/issues"
+    "url": "https://github.com/shahzadthathal/mean-app-admin/issues"
   },
-  "homepage": "https://github.com/shahzadthathal/ecommerce-app-admin#readme",
+  "homepage": "https://github.com/shahzadthathal/mean-app-admin#readme",
   "dependencies": {
     "body-parser": "^1.15.0",
     "connect-busboy": "0.0.2",
