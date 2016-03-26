@@ -8,8 +8,13 @@ var auth		        = require('./config/authorization');
 var methodOverride  = require('method-override');
 //var fs              = require( "fs" );
 var busboy          = require('connect-busboy');
+
+
 // Setup mongoose
-mongoose.connect('mongodb://127.0.0.1:27017/ecommerce-app-db');
+//mongoose.connect('mongodb://127.0.0.1:27017/ecommerce-app-db');
+
+//test db
+mongoose.connect('mongodb://ecommerce-app:123456@ds015849.mlab.com:15849/ecommerce-app-db');
 
 
  // Setup Express
