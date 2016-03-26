@@ -10,12 +10,7 @@ var methodOverride  = require('method-override');
 var busboy          = require('connect-busboy');
 // Setup mongoose
 mongoose.connect('mongodb://127.0.0.1:27017/ecommerce-app-db');
-// mongo lab
-//db user: ecommerce-app
-//db pass: 123456
 
-//To connect using a driver via the standard MongoDB URI (what's this?):
- // mongodb://ecommerce-app:123456@ds015849.mlab.com:15849/ecommerce-app-db
 
  // Setup Express
  app.set('views', __dirname + '/admin/views');
@@ -43,30 +38,6 @@ app.use(function(req, res, next) {
 });
 
 
-
-/*app.get('/api/product/uploadimage', function(req, res){
-  res.send('<form method="post" action="/api/product/uploadimage" enctype="multipart/form-data">'
-    + '<p>Image: <input type="file" name="image" /></p>'
-    +'<p>Title:<input type="text" namr="title"></p>'
-    + '<p><input type="submit" value="Upload" /></p>'
-    + '</form>');
-});
-*/
-/*app.post('/api/product/uploadimage',function(req,res){
-  console.log(req.body);
-  console.log(req.file);
-  var fstream;
-    req.pipe(req.busboy);
-    req.busboy.on('file', function (fieldname, file, filename) {
-        console.log("Uploading: " + filename); 
-        fstream = fs.createWriteStream(__dirname + '/uploads/' + filename);
-        file.pipe(fstream);
-        fstream.on('close', function () {
-            res.redirect('back');
-        });
-    });
-});
-*/
 
 app.listen(3003, function(){
 	console.log('I\'m Listening at 3003...');
