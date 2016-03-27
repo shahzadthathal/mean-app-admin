@@ -12,10 +12,11 @@ var productSchema = mongoose.Schema({
 	general_price:{ type:Number, required:true },
 	status:{ type:Number, required:true, default:1 },
 	image:{ type:String, required:true},
+	caption:{type:String},
+	short_description:{ type:String, required:true },
 	description:{ type:String, required:true },
 	category:{ type:mongoose.Schema.Types.ObjectId, ref:'ProductCategory' },
 	date_created:{ type:Date, default:Date() }, //select: false
-	//tags: [tagSchema]
 	tags: [String]
 });
 module.exports = mongoose.model('Products', productSchema);

@@ -71,13 +71,18 @@
  <p ng-show="productForm.category.$invalid && !productForm.category.$pristine" class="help-block">Product Category is required.</p>
 </div>
 
-
-<!-- <div class="form-group" ng-class="{ 'has-error' : productForm.description.$invalid && !productForm.description.$pristine }">
-    <label>Product Description</label>
-    <textarea name="description" class="form-control" ng-model="product.description" id="description" cols="50" rows="5" required></textarea>
-    <p ng-show="productForm.description.$invalid && !productForm.description.$pristine" class="help-block">Product Description is required.</p>
+<div class="form-group" ng-class="{ 'has-error' : productForm.caption.$invalid && !productForm.caption.$pristine }">
+    <label>Product Caption</label>
+    <input type="text" name="caption" class="form-control" ng-model="product.caption" ng-minlength="3" ng-maxlength="20">
+   <p ng-show="productForm.caption.$error.minlength" class="help-block">Product Caption is too short.</p>
+    <p ng-show="productForm.caption.$error.maxlength" class="help-block">Product Caption is too long.</p>
 </div>
- -->
+
+<div class="form-group" ng-class="{ 'has-error' : productForm.short_description.$invalid && !productForm.short_description.$pristine }">
+    <label>Product Short Description</label>
+    <textarea name="short_description" class="form-control" ng-model="product.short_description" cols="50" rows="5" ></textarea>
+    <p ng-show="productForm.short_description.$invalid && !productForm.short_description.$pristine" class="help-block">Product Short Description is required.</p>
+</div>
 
 <div class="form-group" ng-class="{ 'has-error' : productForm.description.$invalid && !productForm.description.$pristine }">
     <label>Page Description</label>

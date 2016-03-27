@@ -36,6 +36,7 @@
                             <th>SN</th>
                             <th>Title</th>
                             <th>Slug</th>
+                            <th>Author</th>
                             <th>Status</th>
                             <th>Image</th>
                             <th> Actions </th>
@@ -46,6 +47,7 @@
                             <td>{{$index+1}}</td>
                             <td>{{ blog.title }}</td>
                             <td>{{ blog.slug }}</td>
+                            <td>{{blog.author}}</td>
                             <td>{{ blog.status =='1' ? "Active" : "Inactive" }}</td>
                             <td><img ng-src="{{imageUrl}}{{blog.image}}" height="70" width="80" alt=""/></td>
                             <td>

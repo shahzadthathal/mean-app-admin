@@ -36,6 +36,9 @@ function create(data) {
   	    title: data.title,
   		  slug: data.slug,
   		  image: data.image,
+        author: data.author,
+        caption:data.caption,
+        short_description:data.short_description,
   		  description: data.description,
   		  category: data.category,
   		  tags: data.tags
@@ -50,7 +53,10 @@ function update(id, data) {
     .then(function (blog) {
         blog.title = data.title,
     	  blog.slug  = data.slug,
+        blog.author = data.author,
     	  blog.image = data.image,
+        blog.caption = data.caption,
+        blog.short_description = data.short_description,
     	  blog.description = data.description,
     	  blog.category = data.category,
     	  blog.tags = data.tags,

@@ -13,6 +13,8 @@ var busboy          = require('connect-busboy');
 // Setup mongoose
 mongoose.connect('mongodb://127.0.0.1:27017/ecommerce-app-db');
 
+//live db
+//
 
 
  // Setup Express

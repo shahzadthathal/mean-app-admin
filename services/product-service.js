@@ -39,6 +39,8 @@ function create(data) {
 		  sale_price: data.sale_price,
 		  general_price: data.general_price,
 		  image: data.image,
+      caption:data.caption,
+      short_description:data.short_description,
 		  description: data.description,
 		  category: data.category,
 		  tags: data.tags
@@ -49,9 +51,6 @@ function create(data) {
     });
 }
 function update(id, data) {
-  
-  console.log('update service',data);
-
   return get(id)
     .then(function (product) {
         product.title = data.title,
@@ -59,6 +58,8 @@ function update(id, data) {
     	  product.sale_price = data.sale_price,
     	  product.general_price = data.general_price,
     	  product.image = data.image,
+        product.caption = data.caption,
+        product.short_description = data.short_description,
     	  product.description = data.description,
     	  product.category = data.category,
     	  product.tags = data.tags,

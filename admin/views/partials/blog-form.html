@@ -11,7 +11,7 @@
 
 <div class="form-group" ng-class="{ 'has-error' : blogForm.title.$invalid && !blogForm.title.$pristine }">
     <label>Blog Title</label>
-    <input type="text" name="title" class="form-control" ng-model="blog.title" ng-minlength="3" ng-maxlength="50" required>
+    <input type="text" name="title" class="form-control" ng-model="blog.title" ng-minlength="3" ng-maxlength="150" required>
     <p ng-show="blogForm.title.$invalid && !blogForm.title.$pristine" class="help-block">Blog Title is required.</p>
 </div>
 
@@ -45,11 +45,26 @@
 </div>
 
 
-<!-- <div class="form-group" ng-class="{ 'has-error' : blogForm.description.$invalid && !blogForm.description.$pristine }">
-    <label>Blog Description</label>
-    <textarea name="description" class="form-control" ng-model="blog.description" cols="50" rows="5" ></textarea>
-    <p ng-show="blogForm.description.$invalid && !blogForm.description.$pristine" class="help-block">Blog Description is required.</p>
-</div> -->
+<div class="form-group" ng-class="{ 'has-error' : blogForm.author.$invalid && !blogForm.author.$pristine }">
+    <label>Blog Author Name</label>
+    <input type="text" name="author" class="form-control" ng-model="blog.author" ng-minlength="3" ng-maxlength="50">
+   <p ng-show="blogForm.author.$error.minlength" class="help-block">Blog Author Name is too short.</p>
+    <p ng-show="blogForm.author.$error.maxlength" class="help-block">Blog Author Name is too long.</p>
+</div>
+
+
+<div class="form-group" ng-class="{ 'has-error' : blogForm.caption.$invalid && !blogForm.caption.$pristine }">
+    <label>Blog Caption</label>
+    <input type="text" name="caption" class="form-control" ng-model="blog.caption" ng-minlength="3" ng-maxlength="20">
+   <p ng-show="blogForm.caption.$error.minlength" class="help-block">Blog Caption is too short.</p>
+    <p ng-show="blogForm.caption.$error.maxlength" class="help-block">Blog Caption is too long.</p>
+</div>
+
+<div class="form-group" ng-class="{ 'has-error' : blogForm.short_description.$invalid && !blogForm.short_description.$pristine }">
+    <label>Blog Short Description</label>
+    <textarea name="short_description" class="form-control" ng-model="blog.short_description" cols="50" rows="5" ></textarea>
+    <p ng-show="blogForm.short_description.$invalid && !blogForm.short_description.$pristine" class="help-block">Blog Short Description is required.</p>
+</div>
 
 <div class="form-group" ng-class="{ 'has-error' : blogForm.description.$invalid && !blogForm.description.$pristine }">
     <label>Blog Description</label>
