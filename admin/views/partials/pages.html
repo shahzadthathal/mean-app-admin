@@ -35,9 +35,7 @@
                         <tr>
                             <th>SN</th>
                             <th>Title</th>
-                            <th>Slug</th> 
-                            <th>Meta Title</th>
-                            <th>Meta Kewords</th>                            
+                            <th>Slug</th>                    
                             <th> Actions </th>
                         </tr>
                         </thead>
@@ -45,9 +43,7 @@
                         <tr ng-repeat="page in pages">
                             <td>{{$index+1}}</td>
                             <td>{{ page.title }}</td>
-                            <td>{{ page.slug }}</td>							
-                            <td>{{ page.meta_title }}</td> 
-                            <td>{{ page.meta_kewords }}</td>                           
+                            <td>{{ page.slug }}</td>                        
                             <td>
  <button class="btn btn-success btn-sm" type="button" ng-click="showModal(page)">
  <i class="fa fa-pencil"></i> Update</button>

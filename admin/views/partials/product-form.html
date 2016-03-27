@@ -72,11 +72,19 @@
 </div>
 
 
-<div class="form-group" ng-class="{ 'has-error' : productForm.description.$invalid && !productForm.description.$pristine }">
+<!-- <div class="form-group" ng-class="{ 'has-error' : productForm.description.$invalid && !productForm.description.$pristine }">
     <label>Product Description</label>
     <textarea name="description" class="form-control" ng-model="product.description" id="description" cols="50" rows="5" required></textarea>
     <p ng-show="productForm.description.$invalid && !productForm.description.$pristine" class="help-block">Product Description is required.</p>
 </div>
+ -->
+
+<div class="form-group" ng-class="{ 'has-error' : productForm.description.$invalid && !productForm.description.$pristine }">
+    <label>Page Description</label>
+    <text-angular name="description" id="description" ng-model="product.description"></text-angular>
+    <p ng-show="productForm.description.$invalid && !productForm.description.$pristine" class="help-block">Product Description is required.</p>
+</div>
+
 
 
 <div class="form-group" ng-class="{ 'has-error' : productForm.image.$invalid && !productForm.image.$pristine }">

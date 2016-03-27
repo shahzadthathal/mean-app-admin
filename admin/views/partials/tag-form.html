@@ -10,9 +10,9 @@
 
 
 <div class="form-group" ng-class="{ 'has-error' : tagForm.title.$invalid && !tagForm.title.$pristine }">
-    <label>Page Title</label>
+    <label>Tag Title</label>
     <input type="text" name="title" class="form-control" ng-model="tag.title" ng-minlength="3" ng-maxlength="50" required>
-    <p ng-show="tagForm.title.$invalid && !tagForm.title.$pristine" class="help-block">Page Title is required.</p>
+    <p ng-show="tagForm.title.$invalid && !tagForm.title.$pristine" class="help-block">Tag Title is required.</p>
 </div>
 
 

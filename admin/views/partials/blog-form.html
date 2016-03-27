@@ -45,11 +45,19 @@
 </div>
 
 
-<div class="form-group" ng-class="{ 'has-error' : blogForm.description.$invalid && !blogForm.description.$pristine }">
+<!-- <div class="form-group" ng-class="{ 'has-error' : blogForm.description.$invalid && !blogForm.description.$pristine }">
     <label>Blog Description</label>
     <textarea name="description" class="form-control" ng-model="blog.description" cols="50" rows="5" ></textarea>
     <p ng-show="blogForm.description.$invalid && !blogForm.description.$pristine" class="help-block">Blog Description is required.</p>
+</div> -->
+
+<div class="form-group" ng-class="{ 'has-error' : blogForm.description.$invalid && !blogForm.description.$pristine }">
+    <label>Blog Description</label>
+    <text-angular name="description" id="description" ng-model="blog.description"></text-angular>
+    <p ng-show="blogForm.description.$invalid && !blogForm.description.$pristine" class="help-block">Blog Description is required.</p>
 </div>
+
+
 
 
 <div class="form-group" ng-class="{ 'has-error' : blogForm.image.$invalid && !blogForm.image.$pristine }">

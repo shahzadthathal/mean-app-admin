@@ -94,7 +94,7 @@ adminApp.controller('ProductCategoryModalInstanceCtrl', function ($scope, produc
 	}
 
   	$scope.cancel = function () {
-  		usSpinnerService.stop(category-'spinner-1');
+  		usSpinnerService.stop('spinner-1');
     	$uibModalInstance.dismiss('cancel');
   	};
 

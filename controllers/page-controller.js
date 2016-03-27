@@ -27,9 +27,6 @@ module.exports.create = function(req, res){
 }
 
 module.exports.update = function (req, res) {
-
-  	//req.body.tags = req.body.tags.replace(/\s/g , '').split(",");
-
     Services.PageSrvc.update(req.params.id, req.body)
     .then(function (result) {
       res.json(result);

@@ -19,9 +19,12 @@ function detail(slug){
 }
 
 function create(data) {
+  console.log(data);
+
     var productCategory = new Models.ProductCategoryModel({ 
         title: data.title,
 	      slug:data.slug,
+        status: data.status,
 	      description: data.description
     });
     return Promise.denodeify(productCategory.save.bind(productCategory))()

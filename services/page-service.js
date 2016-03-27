@@ -23,11 +23,8 @@ function create(data){
 	var PageModel = new Models.PageModel({
 		title: data.title,
 		slug:data.slug,
-    description: data.description,
-    meta_title: data.meta_title,
-    meta_kewords: data.meta_kewords,
-    meta_description: data.meta_description
-	});	
+    description: data.description
+  	});	
 	return Promise.denodeify(PageModel.save.bind(PageModel))()
     .then(function (PageModel) {
 		    return PageModel;
@@ -48,10 +45,7 @@ function update(id, data) {
     .then(function (page) {
         page.title = data.title,
         page.slug =data.slug,
-        page.description = data.description,
-        page.meta_title = data.meta_title,
-        page.meta_kewords = data.meta_kewords,
-        page.meta_description = data.meta_description
+        page.description = data.description
         return Promise.denodeify(page.save.bind(page))()
     })
     .then(function (page) {

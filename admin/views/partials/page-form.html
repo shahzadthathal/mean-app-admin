@@ -24,28 +24,6 @@
 </div>
 
 
-
-<div class="form-group" ng-class="{ 'has-error' : pageForm.meta_title.$invalid && !pageForm.meta_title.$pristine }">
-    <label>Page Meta Title</label>
-    <input type="text" name="meta_title" class="form-control" ng-model="page.meta_title" ng-minlength="3" ng-maxlength="50" required>
-    <p ng-show="pageForm.meta_title.$invalid && !pageForm.meta_title.$pristine" class="help-block">Page Meta Title is required.</p>
-</div>
-
-<div class="form-group" ng-class="{ 'has-error' : pageForm.meta_kewords.$invalid && !pageForm.meta_kewords.$pristine }">
-    <label>Page Meat Kewords</label>
-    <input type="text" name="meta_kewords" class="form-control" ng-model="page.meta_kewords" ng-minlength="3" ng-maxlength="50" required>
-    <p ng-show="pageForm.meta_kewords.$invalid && !pageForm.meta_kewords.$pristine" class="help-block">Page Meta Kewords required.</p>
-</div>
-
-<div class="form-group" ng-class="{ 'has-error' : pageForm.meta_description.$invalid && !pageForm.meta_description.$pristine }">
-    <label>Page Meta Description</label>
-     <input type="text" name="meta_description" class="form-control" ng-model="page.meta_description" ng-minlength="3" ng-maxlength="50" required>
-
-    <p ng-show="pageForm.meta_description.$invalid && !pageForm.meta_description.$pristine" class="help-block">Page Meta Description is required.</p>
-</div>
-
-
-
 <div class="form-group" ng-class="{ 'has-error' : pageForm.description.$invalid && !pageForm.description.$pristine }">
     <label>Page Description</label>
     <text-angular name="description" id="description" ng-model="page.description"></text-angular>
