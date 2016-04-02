@@ -1,0 +1,23 @@
+
+<title>{{pageData.meta_title}}</title>
+<meta name="description" content="{{pageData.meta_description}}">
+<meta name="keywords" content="{{pageData.meta_keywords}}">
+
+
+<div class="row">
+
+ <div class="col-md-3">
+<p class="lead"></p>
+ <div product-category-directive></div>
+
+</div>
+
+<div class="col-md-9">
+
+
+<h1>{{pageData.title}}</h1>
+
+<p ng-bind-html="pageData.description | cleanHTML"></p>
+</div>
+
+</div>

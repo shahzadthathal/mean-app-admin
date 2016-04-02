@@ -1,0 +1,121 @@
+/*!
+ * Start Bootstrap - Shop Homepage HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+	background:#DCDCDC;
+}
+
+.slide-image {
+    width: 100%;
+}
+
+.carousel-holder {
+    margin-bottom: 30px;
+}
+
+.carousel-control,
+.item {
+    border-radius: 4px;
+}
+
+.caption {
+    height: 150px;
+    overflow: hidden;
+     border-bottom: 8px solid #cccc00;
+     border-radius: 4px;
+}
+
+.caption h4 {
+    white-space: nowrap;
+}
+
+.thumbnail img {
+        width: 100%;
+}
+
+.thumbnail img {
+    max-height: 150px;
+}
+
+.thumnail p{
+    margin: 0 0 0 10px;
+}
+
+.thumnail{
+    border-bottom: 1px #cccc00;
+}
+
+.block-label-left { position: absolute; background-color:#5cb85c; color: #fff;  top:12px;  left:12px; border-radius:0px 8px !important; padding:3px 6px; font-size:14px; font-weight: 700;-webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px;}   
+
+.block-label-right { position: absolute; background-color:#d9534f; color: #fff; top:12px;  right:12px; border-radius:0px 8px !important; padding:3px 6px; font-size:14px; font-weight: 700;-webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px;} 
+.block-label-right{
+    text-decoration:line-through #000;
+}
+
+.media-body-label-left { position: absolute; background-color:#5cb85c; color: #fff;  top:12px;  left:12px; border-radius:0px 8px !important; padding:3px 6px; font-size:14px; font-weight: 700;-webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px;}   
+
+.media-body-label-right { position: absolute; background-color:#d9534f; color: #fff; top:12px;  left:250px; border-radius:0px 8px !important; padding:3px 6px; font-size:14px; font-weight: 700;-webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px;} 
+.media-body-label-right{
+    text-decoration:line-through #000;
+}
+
+
+.custom-caption{ position: absolute; background-color:#eea236;  top:130px; left:170px;  width:auto; height:auto; padding: 10px; font-size:14px; font-weight: 700;
+    -webkit-border-radius:50%; -moz-border-radius:50%; border-radius:50%;-webkit-box-shadow: 0 0 5px #ADADAD;  -moz-box-shadow: 0 0 5px #ADADAD;
+  box-shadow: 0 0 5px #ADADAD; text-align: center; color: #cf1919;} 
+
+
+.ratings {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #d17581;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
+}
+
+footer {
+    margin: 50px;
+    text-align: center;
+}
+
+
+
+
+.navbar-inverse {
+    background-color: #cf1919;
+    border-color: #cf1919;
+	color:#FFFFFF;
+}
+
+.list-group-item {
+    background: #cccc00;
+}
+
+.navbar-nav,navbar-header a{
+	color: #fff !important;
+}
+
+
+
+.h1, h1 {
+    font-size: 16px;
+}
+
+.h2, h2 {
+    font-size: 12px;
+}
+
+.h3, h3 {
+    font-size: 18px;
+}

@@ -14,7 +14,7 @@ adminApp.controller('ProductCtrl', ['$scope', 'UserSrvc', 'ProductSrvc', '$locat
 		usSpinnerService.spin('spinner-1');
 
 	  	var modalInstance = $uibModal.open({
-	      templateUrl: '/partials/product-form.html',
+	      templateUrl: 'partials/product-form.html',
 	      controller: 'ProductModalInstanceCtrl',
 	      resolve: {
                 product: function () {

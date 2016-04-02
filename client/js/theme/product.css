@@ -1,0 +1,58 @@
+
+.product-list{ clear:both; height:auto; overflow:hidden; margin-top:30px; margin-bottom:20px; }
+
+ .product-box{position:relative; float:left; width:32%;  margin-right:0.65%; margin-left:0.65%;  background:#CCCC00; margin-bottom:32px; min-height:210px;
+-webkit-border-radius:6px; -moz-border-radius:6px; border-radius:6px; -webkit-box-shadow: 0 0 5px #ADADAD;    -moz-box-shadow: 0 0 5px #ADADAD;
+  box-shadow: 0 0 5px #ADADAD;    -webkit-transition: box-shadow .2s;    -moz-transition: box-shadow .2s;    transition: box-shadow .2s; }
+  
+  .product-box:hover{ -webkit-box-shadow: 0 0 9px #ADADAD;    -moz-box-shadow: 0 0 9px #ADADAD;
+  box-shadow: 0 0 9px #ADADAD;    -webkit-transition: box-shadow .2s;    -moz-transition: box-shadow .2s;    transition: box-shadow .2s; }
+  
+
+.product-box img{max-height: 150px; max-width: 320px;}
+
+.block-image01 { border-top-right-radius: 5px;  border-top-left-radius: 5px; height:auto; width:100%; }
+
+.BlockTxt{  padding:12px 8px;color:#000;}
+.BlockTxt a{  color:#000;}
+.BlockTxt:hover{  color:#fff; text-decoration:none;}
+
+a{ color:#000 !important;}
+a:hover{color:#000 !important;  text-decoration:none;}
+
+
+.block-label-left { position: absolute; background-color:#fff;  top:12px;  left:12px; border-radius:9px; padding:3px 6px; font-size:14px; font-weight: 700;-webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px;}	
+
+.block-label-right { position: absolute; background-color:#fff;  top:12px;  right:12px; border-radius:9px; padding:3px 6px; font-size:14px; font-weight: 700;-webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px;}	
+		
+	
+.CircleIcon{ position: absolute; background-color:#fff;  top:82px; right:9px;  width:60px; height:60px; font-size:14px; font-weight: 700;
+    -webkit-border-radius:50%; -moz-border-radius:50%; border-radius:50%;-webkit-box-shadow: 0 0 5px #ADADAD;  -moz-box-shadow: 0 0 5px #ADADAD;
+  box-shadow: 0 0 5px #ADADAD;}	
+	
+.CircleImage{ -webkit-border-radius:50%; -moz-border-radius:50%; border-radius:50%; width:100%; height:auto; }	
+
+
+
+@media only screen and (max-width :1024px){
+	.product-box{ float:left; width:44%; margin-left:3%; margin-right:3%;  height:240px;  margin-bottom:32px;}
+	.CircleIcon{ top:110px;}
+	}
+	
+
+@media only screen and (max-width :800px){
+	.product-list{ max-width:360px; margin-left:auto; margin-right:auto;}
+	.product-box{ float:left; width:90%; margin-left:5%; margin-right:5%;  height:230px;  margin-bottom:32px;}
+	.CircleIcon{ top:96px;}
+	}	
+	
+@media only screen and (max-width :350px){
+	.product-list{ max-width:320px;background-color:#963; margin-left:auto; margin-right:auto;}
+	.product-box{ float:left; width:94%; margin-left:3%; margin-right:3%;  height:230px;  margin-bottom:32px;}
+	.CircleIcon{ top:96px;}
+	}	
+
+
+@media only screen and (max-width :652px){
+.block-image01 { border-top-right-radius: 5px;  border-top-left-radius: 5px; height:auto; width:100%; }
+}

@@ -1,0 +1,66 @@
+
+
+
+<div class="col-md-3">
+    <p class="lead">{{shopName}}</p>
+     <div product-category-directive></div>
+</div>
+
+<div class="col-md-9">
+
+<div class="row">
+       <h1><a href="#/tag/{{tagDetail.title}}">{{tagDetail.title}}</a></h1>
+        <h2>{{tagDetail.description}}</h2>
+</div>  
+
+<div class="row">
+  <div class="col-sm-6 col-md-4"  ng-repeat='product in products'>
+    <div class="thumbnail">
+      <a href="#/product-detail/{{product.slug}}">  
+      <img src="{{imageUrl}}{{product.image}}" alt="{{product.title}}" height="130">
+      <div ng-if="product.sale_price" class="block-label-left">{{product.sale_price | currency}}</div>
+      <div ng-if="product.general_price" class="block-label-right">{{product.general_price | currency}}</div>
+      </a>
+      <div class="caption">
+        <div ng-if="product.caption" class="custom-caption">{{product.caption}}</div>
+        <h1><a href="#/product-detail/{{product.slug}}">{{product.title}}</a></h1>
+        <p>{{product.short_description}}...</p>
+      </div>    
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+<div class="media" ng-repeat='blog in blogs'>
+<h1 class="media-heading"><a href="#/blog-detail/{{blog.slug}}">{{blog.title}}</a></h1>
+  <div class="media-left">
+    <a href="#/blog-detail/{{blog.slug}}">
+<img class="media-object" src="{{imageUrl}}{{blog.image}}" alt="{{blog.title}}" height="200" width="200">
+    </a>
+  </div>
+  <div class="media-body">
+      <i class="glyphicon glyphicon-calendar"> {{blog.date_created | date : format:'MMM d,y'}}</i>
+      <i class="glyphicon glyphicon-user"> {{blog.author}}</i>
+      <p>{{blog.short_description}}</p>
+  </div>
+</div>
+</div>
+
+
+<!-- <div class="row">
+  <div class="col-sm-6 col-md-4"  ng-repeat='blog in blogs'>
+    <div class="thumbnail">
+      <a href="#/blog-detail/{{blog.slug}}">  
+      <img src="{{imageUrl}}{{blog.image}}" alt="{{blog.title}}" height="130">
+      </a>
+      <div class="caption">
+        <h1><a href="#/blog-detail/{{blog.slug}}">{{blog.title}}</a></h1>
+        <small>By: Shahzad on 26/3/2016</small>
+        <p>{{blog.description | limitTo:30}}...</p>
+      </div>    
+    </div>
+  </div>
+</div> -->
+
+</div>

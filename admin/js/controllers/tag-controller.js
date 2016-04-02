@@ -10,7 +10,7 @@ adminApp.controller('TagCtrl', ['$scope', 'UserSrvc', 'TagSrvc', '$location', '$
    
 	$scope.showModal = function (tag = null) {
 	  	var modalInstance = $uibModal.open({
-	      templateUrl: '/partials/tag-form.html',
+	      templateUrl: 'partials/tag-form.html',
 	      controller: 'TagModalInstanceCtrl',
 	      resolve: {
                 tag: function () {

@@ -14,7 +14,7 @@ adminApp.controller('BlogCtrl', ['$scope', 'UserSrvc', 'BlogSrvc', '$location', 
 	$scope.showModal = function (blog = null) {
 		usSpinnerService.spin('spinner-1');
 	  	var modalInstance = $uibModal.open({
-	      templateUrl: '/partials/blog-form.html',
+	      templateUrl: 'partials/blog-form.html',
 	      controller: 'BlogModalInstanceCtrl',
 	      resolve: {
                 blog: function () {

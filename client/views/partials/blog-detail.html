@@ -1,0 +1,66 @@
+
+
+<div class="col-md-3">
+    <p class="lead">{{shopName}}</p>
+     <div blog-category-directive></div>
+</div>
+
+<div class="col-md-9">
+
+<div class="row">
+<div class="media">
+<h1 class="media-heading"><a href="#/blog-detail/{{blogDetail.slug}}">{{blogDetail.title}}</a></h1>
+  <div class="media-left">
+    <a href="#/blog-detail/{{blogDetail.slug}}">
+<img class="media-object" src="{{imageUrl}}{{blogDetail.image}}" alt="{{blogDetail.title}}" height="300" width="350">
+    </a>
+  </div>
+  <div class="media-body">
+      <i class="glyphicon glyphicon-calendar"> {{blogDetail.date_created | date : format:'MMM d,y'}}</i>
+      <i class="glyphicon glyphicon-user"> {{blogDetail.author}}</i>
+      <p ng-bind-html="blogDetail.description | cleanHTML"></p>      
+      <div ng-repeat="tag in blogDetail.tags">
+        <span class="label label-success"><a href="#/tag/{{tag}}">{{tag}}</a></span>
+      </div>
+
+  </div>
+</div>
+</div>
+
+
+<br/>
+
+<div class="row">
+<div class="media" ng-repeat='blog in blogs'>
+<h1 class="media-heading"><a href="#/blog-detail/{{blog.slug}}">{{blog.title}}</a></h1>
+  <div class="media-left">
+    <a href="#/blog-detail/{{blog.slug}}">
+<img class="media-object" src="{{imageUrl}}{{blog.image}}" alt="{{blog.title}}" height="200" width="200">
+    </a>
+  </div>
+  <div class="media-body">
+      <i class="glyphicon glyphicon-calendar"> {{blog.date_created | date : format:'MMM d,y'}}</i>
+      <i class="glyphicon glyphicon-user"> {{blog.author}}</i>
+      <p>{{blog.short_description}}</p>
+  </div>
+</div>
+</div>
+
+
+<!--   <div class="col-sm-6 col-md-4"  ng-repeat='blog in blogs'>
+    <div class="thumbnail">
+      <a href="#/blog-detail/{{blog.slug}}">  
+      <img src="{{imageUrl}}{{blog.image}}" alt="{{blog.title}}" height="130">
+      </a>
+      <div class="caption">
+        <h1><a href="#/blog-detail/{{blog.slug}}">{{blog.title}}</a></h1>
+      <i class="glyphicon glyphicon-calendar"> {{blogDetail.date_created | date : format:'MMM d,y'}}</i>
+      <i class="glyphicon glyphicon-user"> {{blogDetail.author}}</i>
+       <p>{{blog.short_description}}...</p>
+      </div>    
+    </div>
+  </div> -->
+
+</div>
+
+

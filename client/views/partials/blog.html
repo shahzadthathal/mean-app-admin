@@ -1,0 +1,24 @@
+
+<div class="col-md-3">
+    <p class="lead">{{shopName}}</p>
+   <div blog-category-directive></div>
+</div>
+
+
+<div class="col-md-9">
+<div class="row">
+<div class="media" ng-repeat='blog in blogs'>
+<h1 class="media-heading"><a href="#/blog-detail/{{blog.slug}}">{{blog.title}}</a></h1>
+  <div class="media-left">
+    <a href="#/blog-detail/{{blog.slug}}">
+<img class="media-object" src="{{imageUrl}}{{blog.image}}" alt="{{blog.title}}" height="200" width="200">
+    </a>
+  </div>
+  <div class="media-body">
+      <i class="glyphicon glyphicon-calendar"> {{blog.date_created | date : format:'MMM d,y'}}</i>
+      <i class="glyphicon glyphicon-user"> {{blog.author}}</i>
+      <p>{{blog.short_description}}</p>
+  </div>
+</div>
+</div>
+</div>

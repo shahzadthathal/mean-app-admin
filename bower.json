@@ -1,34 +1,23 @@
 {
-  "name": "ecommerce-app-admin",
-  "version": "1.0.7",
-  "homepage": "http://startbootstrap.com/template-overviews/sb-admin-2/",
+  "name": "ecommerce-app-admin-client",
+  "version": "1.0.0",
+  "homepage": "git+ssh://git@github.com/shahzadthathal/mean-app-admin.git",
   "authors": [
-    "David Miller"
+    "Muhammad Shahzad"
   ],
-  "description": "A free, open source, Bootstrap admin theme created by Start Bootstrap",
+  "description": "Angular client with Bootstrap",
   "keywords": [
-    "bootstrap",
-    "theme"
+    "angular client",
+    "client side"
   ],
-  "license": "Apache",
-  "ignore": [
-    "**/.*",
-    "bower_components",
-    "test",
-    "tests",
-    "pages",
-    "index.html",
-    "/js"
-  ],
-  "main": [
-    "theme/dist/css/sb-admin-2.css",
-    "theme/dist/js/sb-admin-2.js"
-  ],
+  "license": "MIT",
   "dependencies": {
     "jquery": "~2.2.1",
     "angular": "^1.4.0",
+	"angular-cookies": "^1.4.0",
+	"angular-resource": "^1.4.0",
     "angular-route": "^1.4.0",
-    "bootstrap": "~3.3.6",
+	"bootstrap": "~3.3.6",
     "datatables": "~1.10.4",
     "datatables-plugins": "~1.0.1",
     "font-awesome": "~4.2.0",

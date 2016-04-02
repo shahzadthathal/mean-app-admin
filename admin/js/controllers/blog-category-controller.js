@@ -10,7 +10,7 @@ adminApp.controller('BlogCategoryCtrl', ['$scope', 'UserSrvc', 'BlogCategorySrvc
    
 	$scope.showModal = function (blogcategory = null) {
 	  	var modalInstance = $uibModal.open({
-	      templateUrl: '/partials/blog-category-form.html',
+	      templateUrl: 'partials/blog-category-form.html',
 	      controller: 'BlogCategoryModalInstanceCtrl',
 	      resolve: {
                 blogcategory: function () {

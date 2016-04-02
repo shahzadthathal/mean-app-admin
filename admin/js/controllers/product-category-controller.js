@@ -12,7 +12,7 @@ adminApp.controller('ProductCategoryCtrl', ['$scope', 'UserSrvc', 'ProductCatego
    
 	$scope.showModal = function (productcategory = null) {
 	  	var modalInstance = $uibModal.open({
-	      templateUrl: '/partials/product-category-form.html',
+	      templateUrl: 'partials/product-category-form.html',
 	      controller: 'ProductCategoryModalInstanceCtrl',
 	      resolve: {
                 productcategory: function () {

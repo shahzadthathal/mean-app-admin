@@ -10,7 +10,7 @@ adminApp.controller('PageCtrl', ['$scope', 'UserSrvc', 'PageSrvc', '$location', 
    
 	$scope.showModal = function (page = null) {
 	  	var modalInstance = $uibModal.open({
-	      templateUrl: '/partials/page-form.html',
+	      templateUrl: 'partials/page-form.html',
 	      controller: 'PageModalInstanceCtrl',
 	      resolve: {
                 page: function () {

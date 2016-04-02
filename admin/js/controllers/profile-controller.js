@@ -14,7 +14,7 @@ adminApp.controller('ProfileCtrl', ['$scope', 'UserSrvc', '$location', '$route',
 		usSpinnerService.spin('spinner-1');
 
 	  	var modalInstance = $uibModal.open({
-	      templateUrl: '/partials/profile-form.html',
+	      templateUrl: 'partials/profile-form.html',
 	      controller: 'ProfileModalInstanceCtrl',
 	      resolve: {
                 profile: function () {

@@ -1,0 +1,60 @@
+
+<div class="col-md-3">
+   <p class="lead">{{shopName}}</p>
+   <div product-category-directive></div>
+</div>
+
+<div class="col-md-9">
+<div class="row">
+  <div class="col-sm-6 col-md-4"  ng-repeat='product in products | pagination : currentPage*itemsPerPage | limitTo: itemsPerPage'>
+    <div class="thumbnail">
+      <a href="#/product-detail/{{product.slug}}">  
+      <img src="{{imageUrl}}{{product.image}}" alt="{{product.title}}" height="130">
+      <div ng-if="product.sale_price" class="block-label-left">{{product.sale_price | currency}}</div>
+      <div ng-if="product.general_price" class="block-label-right">{{product.general_price | currency}}</div>
+      </a>
+      <div class="caption">
+      <div ng-if="product.caption" class="custom-caption">{{product.caption}}</div>
+        <h1><a href="#/product-detail/{{product.slug}}">{{product.title}}</a></h1>
+        <p>{{product.short_description}}...</p>
+      </div>    
+    </div>
+  </div>
+
+</div>
+<!-- <div class="row">
+<div class="pagination-div">
+ 
+ <ul class="pagination">
+  
+  <li ng-class="DisablePrevPage()">
+  
+  <a href ng-click="prevPage()"> Prev</a>
+  
+  </li>
+  
+  <li ng-repeat="n in range()" 
+  
+  ng-class="{active: n == currentPage}"
+  
+  ng-click="setPage(n)">
+  
+  <a href="#">{{n+1}}</a>
+  
+  </li>
+  
+  <li ng-class="DisableNextPage()">
+  
+  <a href ng-click="nextPage()">Next </a>
+  
+  </li>
+ 
+ </ul>
+
+</div> -->
+
+
+
+
+</div>
+</div>
