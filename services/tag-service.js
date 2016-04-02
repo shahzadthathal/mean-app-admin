@@ -13,7 +13,6 @@ function list() {
 }
 
 function detail(tag){
-	console.log(tag);
     return getByTag(tag)
           .then(function(tagModel){
             return tagModel;

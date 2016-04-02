@@ -41,9 +41,8 @@ module.exports.detailByCategorySlug = function(req, res){
 module.exports.listByTag = function(req, res){
 
 	Services.BlogSrvc.listByTag(req.params.tag)
-	.then(function(products){
-		console.log(products);
-		res.json(products);
+	.then(function(blogs){
+		res.json(blogs);
 	});
 }
 

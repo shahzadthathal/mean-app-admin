@@ -44,18 +44,18 @@ app.use(function(req, res, next) {
 });
 
 
-var dbUrl = process.env.MONGOLAB_URI || "mongodb://ecommerce-app:123456@ds015849.mlab.com:15849/ecommerce-app-db";
+var dbUrl = process.env.MONGOLAB_URI || "mongodb://127.0.0.1:27017/ecommerce-app-db";
 var port = process.env.PORT || 3003;
 // Setup mongoose
 //mongoose.connect('mongodb://127.0.0.1:27017/ecommerce-app-db');
 //live db
-//mongoose.connect(dbUrl);
+mongoose.connect(dbUrl);
 
 //mongodb://heroku_17dqqg6h:ira8j6iic4pk0vl1g9qidb16uc@ds011870.mlab.com:11870/heroku_17dqqg6h
   
 
 
-mongodb.MongoClient.connect(dbUrl, function (err, database) {
+/*mongodb.MongoClient.connect(dbUrl, function (err, database) {
   if (err) {
     console.log(err);
     process.exit(1);
@@ -65,7 +65,7 @@ mongodb.MongoClient.connect(dbUrl, function (err, database) {
   //db = database;
   console.log("Database connection ready");
 
-});
+});*/
 
 
 app.listen(port, function(){
@@ -96,9 +96,10 @@ app.listen(port, function(){
 
   app.use('/img', express.static(__dirname + '/admin/img'));
   app.use('/css', express.static(__dirname + '/admin/css'));
-  app.use('/js', express.static(__dirname + '/mean-app-admin/admin/js'));
 
-// Serve public images
+
+  app.use('/js', express.static(__dirname + '/admin/js'));
+  app.use('/bower_components', express.static(__dirname + '/bower_components'));
   app.use('/images', express.static(__dirname+'/uploads/'));
 
   // Load Api routes

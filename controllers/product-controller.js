@@ -44,7 +44,6 @@ module.exports.listByTag = function(req, res){
 
 	Services.ProductSrvc.listByTag(req.params.tag)
 	.then(function(products){
-		console.log(products);
 		res.json(products);
 	});
 }

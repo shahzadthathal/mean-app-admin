@@ -32,7 +32,6 @@ function listByTag(tag){
 }
 
 function create(data) {
-  console.log(' server product controller',data);
     var product = new Models.ProductModel({ 
 	    title: data.title,
 		  slug: data.slug,
