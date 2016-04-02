@@ -96,7 +96,7 @@ app.listen(port, function(){
 
   app.use('/img', express.static(__dirname + '/admin/img'));
   app.use('/css', express.static(__dirname + '/admin/css'));
-  app.use('/js', express.static(__dirname + 'mean-app-admin/admin/js'));
+  app.use('/js', express.static(__dirname + '/mean-app-admin/admin/js'));
 
 // Serve public images
   app.use('/images', express.static(__dirname+'/uploads/'));
