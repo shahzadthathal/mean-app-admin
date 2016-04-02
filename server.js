@@ -3,6 +3,7 @@ var express 	      = require('express');
 var app 		        = express();
 var bodyParser 	    = require('body-parser');
 var mongoose 	      = require('mongoose');
+var mongodb         = require("mongodb")
 var apiRoutes 	    = require('./config/api-routes');
 var auth		        = require('./config/authorization');
 var methodOverride  = require('method-override');
@@ -10,11 +11,6 @@ var methodOverride  = require('method-override');
 var busboy          = require('connect-busboy');
 
 
-// Setup mongoose
-mongoose.connect('mongodb://127.0.0.1:27017/ecommerce-app-db');
-
-//live db
-//
 
 
  // Setup Express
@@ -39,14 +35,52 @@ app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
+  
+
+ // var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  //console.log('Client IP:', ip);
+  
   next();
 });
 
 
+var dbUrl = process.env.MONGOLAB_URI || "mongodb://ecommerce-app:123456@ds015849.mlab.com:15849/ecommerce-app-db";
+var port = process.env.PORT || 3003;
+// Setup mongoose
+//mongoose.connect('mongodb://127.0.0.1:27017/ecommerce-app-db');
+//live db
+//mongoose.connect(dbUrl);
 
-app.listen(3003, function(){
-	console.log('I\'m Listening at 3003...');
+//mongodb://heroku_17dqqg6h:ira8j6iic4pk0vl1g9qidb16uc@ds011870.mlab.com:11870/heroku_17dqqg6h
+  
+
+
+mongodb.MongoClient.connect(dbUrl, function (err, database) {
+  if (err) {
+    console.log(err);
+    process.exit(1);
+  }
+
+  // Save database object from the callback for reuse.
+  //db = database;
+  console.log("Database connection ready");
+
 });
+
+
+app.listen(port, function(){
+      console.log('Listening on port ' + port); //Listening on port 8888
+});
+
+
+
+// Generic error handler used by all endpoints.
+// function handleError(res, reason, message, code) {
+//   console.log("ERROR: " + reason);
+//   res.status(code || 500).json({"error": message});
+// }
+
+
 
  // Public Routes
   app.get('/', function (req, res) {
