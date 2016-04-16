@@ -3,6 +3,7 @@
 
   var Promise = require('promise');
   var Models = require('../models');
+  var Services = require('./common-service.js');
   
 function list() {
 	return Promise.denodeify(Models.BlogCategoryModel.find.bind(Models.BlogCategoryModel))()
@@ -23,28 +24,47 @@ function create(data) {
 
     //data.title.replace(/\s/g,'-').toLowerCase() // Blog Category convert into blog-category
 
-    var blogCategory = new Models.BlogCategoryModel({ 
-        title: data.title,
-	      slug:data.slug,
-	      description: data.description
-    });
-    return Promise.denodeify(blogCategory.save.bind(blogCategory))()
-    .then(function (blogCategory) {
-		    return blogCategory;
-    });
+return Services.getBySlug(data.slug)
+  .then(function(res){
+      if(res != null)
+        return "Slug exist";
+      else{
+
+            var blogCategory = new Models.BlogCategoryModel({ 
+                title: data.title,
+        	      slug:data.slug,
+        	      description: data.description
+            });
+            return Promise.denodeify(blogCategory.save.bind(blogCategory))()
+            .then(function (blogCategory) {
+        		    return blogCategory;
+            });
+        }
+  });
 }
 function update(id, data) {
-  console.log(data);
-    return get(id)
-    .then(function (blogCategory) {
-      blogCategory.title = data.title,
-  	  blogCategory.slug  = data.slug,
-  	  blogCategory.description = data.description,
-  	  blogCategory.status = data.status
-      return Promise.denodeify(blogCategory.save.bind(blogCategory))()
-    })
-    .then(function (blogCategory) {
-      return blogCategory;
+ 
+
+ return Services.verifyBySlug(data.slug,id)
+  .then(function(res){
+      if(res != null)
+        return "Slug exist";
+      else{
+
+            return get(id)
+            .then(function (blogCategory) {
+              blogCategory.title = data.title,
+          	  blogCategory.slug  = data.slug,
+          	  blogCategory.description = data.description,
+          	  blogCategory.status = data.status
+              return Promise.denodeify(blogCategory.save.bind(blogCategory))()
+            })
+            .then(function (blogCategory) {
+              return blogCategory;
+            });
+
+        }
+
     });
 }
   

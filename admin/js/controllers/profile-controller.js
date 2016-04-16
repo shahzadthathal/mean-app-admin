@@ -41,7 +41,7 @@ adminApp.controller('ProfileCtrl', ['$scope', 'UserSrvc', '$location', '$route',
  		
 }]);
 
-adminApp.controller('ProfileModalInstanceCtrl', function ($scope, profile, $http, $uibModalInstance, UserSrvc, usSpinnerService) {
+adminApp.controller('ProfileModalInstanceCtrl', function ($scope, profile, $http, $uibModalInstance, UserSrvc, usSpinnerService, Notification) {
 
     var uploadedImageName = 'noimage.png';
 	$scope.profile = profile;	
@@ -84,7 +84,9 @@ adminApp.controller('ProfileModalInstanceCtrl', function ($scope, profile, $http
 				return UserSrvc.update($scope.profile)
 					   .then(function(result){
 					   		usSpinnerService.stop('spinner-1');
+					   		Notification.success({message: 'Profile updated successfully!', delay: 2000});
 				   			$uibModalInstance.close();
+				   			
 					   })
 					   .catch(function(e){
 					   	    usSpinnerService.stop('spinner-1');

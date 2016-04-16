@@ -1,0 +1,78 @@
+
+
+<div class="modal-header alert-info">
+<h4 class="modal-title">Category...</h4>
+</div>
+<div class="modal-body">
+
+
+<form name="$parent.categoryForm" novalidate>
+
+<div class="form-group" ng-class="{ 'has-error' : categoryForm.parentID.$invalid && !categoryForm.parentID.$pristine }">
+ <label>Parent Category</label>
+<select name="parentID" class="form-control" id="parentID" ng-model="category.parentID">
+    <option ng-selected="true">Select Parent Category</option>
+    <option ng-repeat="category in catList" value="{{category._id}}">
+    {{category.title}}</option>
+</select>
+</div>
+
+
+
+<div class="form-group" ng-class="{ 'has-error' : categoryForm.title.$invalid && !categoryForm.title.$pristine }">
+    <label>Cateogry Title</label>
+    <input type="text" name="title" class="form-control" ng-model="category.title" ng-minlength="3" ng-maxlength="50" required>
+    <p ng-show="categoryForm.title.$invalid && !categoryForm.title.$pristine" class="help-block">Category Title is required.</p>
+</div>
+
+
+<div class="form-group" ng-class="{ 'has-error' : categoryForm.slug.$invalid && !categoryForm.slug.$pristine }">
+    <label>Category Slug</label>
+    <input type="text" name="slug" class="form-control" ng-model="category.slug" ng-minlength="3" ng-maxlength="50" required>
+    <p ng-show="categoryForm.slug.$invalid && !categoryForm.slug.$pristine" class="help-block">Category Slug is required.</p>
+    <p ng-show="categoryForm.slug.$error.minlength" class="help-block">Category Slug is too short.</p>
+    <p ng-show="categoryForm.slug.$error.maxlength" class="help-block">Category Slug is too long.</p>
+</div>
+
+
+<div class="form-group" ng-class="{ 'has-error' : categoryForm.status.$invalid && !categoryForm.status.$pristine }">
+    <label>Category Status</label>
+  <select name="status" class="form-control" ng-model="category.status">
+    <option value="1" ng-selected="true">Active</option>
+    <option value="0">In Active</option>
+ </select>
+ <p ng-show="categoryForm.status.$invalid && !categoryForm.status.$pristine" class="help-block">Category Status is required.</p>
+ </div>
+
+<div class="form-group" ng-class="{ 'has-error' : categoryForm.type.$invalid && !categoryForm.type.$pristine }">
+    <label>Category Type</label>
+  <select name="type" class="form-control" ng-model="category.type">
+    <option value="product" ng-selected="true">Product</option>
+    <option value="blog">Blog</option>
+ </select>
+ <p ng-show="categoryForm.type.$invalid && !categoryForm.type.$pristine" class="help-block">Category Type is required.</p>
+ </div>
+ 
+
+
+<div class="form-group" ng-class="{ 'has-error' : categoryForm.description.$invalid && !categoryForm.description.$pristine }">
+    <label>Category Description</label>
+    <textarea name="description" class="form-control" ng-model="category.description" cols="50" rows="5" ></textarea>
+    <p ng-show="categoryForm.description.$invalid && !categoryForm.description.$pristine" class="help-block">Category Description is required.</p>
+</div>
+
+
+</form>
+
+</div>
+
+
+
+<div class="modal-footer">
+
+<button type="submit" class="btn btn-primary" ng-disabled="categoryForm.$invalid" 
+ng-click="submitForm(categoryForm)">Submit</button>
+<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+
+</div>
+

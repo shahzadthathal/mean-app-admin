@@ -3,6 +3,7 @@
 
   var Promise = require('promise');
   var Models = require('../models');
+  var Services = require('./common-service.js');
   
 function list() {
 	return Promise.denodeify(Models.BlogModel.find.bind(Models.BlogModel))()
@@ -24,6 +25,13 @@ function listByCategory(cateid){
       });
 }
 
+function listBySubCategory(cateid){
+   return Promise.denodeify(Models.BlogModel.find.bind(Models.BlogModel))({sub_category:cateid})
+      .then(function(results){
+          return results;
+      });
+}
+
 function listByTag(tag){
     return Promise.denodeify(Models.BlogModel.find.bind(Models.BlogModel))({ tags: tag })
       .then(function(results){
@@ -32,41 +40,60 @@ function listByTag(tag){
 }
 
 function create(data) {
-    var blog = new Models.BlogModel({ 
-  	    title: data.title,
-  		  slug: data.slug,
-  		  image: data.image,
-        author: data.author,
-        caption:data.caption,
-        short_description:data.short_description,
-  		  description: data.description,
-  		  category: data.category,
-  		  tags: data.tags
-    });
-    return Promise.denodeify(blog.save.bind(blog))()
-    .then(function (blog) {
-		    return blog;
-    });
+
+  return Services.getBySlug(data.slug)
+  .then(function(res){
+      if(res != null)
+        return "Slug exist";
+      else{
+
+            var blog = new Models.BlogModel({ 
+          	    title: data.title,
+          		  slug: data.slug,
+          		  image: data.image,
+                author: data.author,
+                caption: data.caption,
+                short_description:data.short_description,
+          		  description: data.description,
+          		  category: data.category,
+                sub_category: data.sub_category,
+          		  tags: data.tags
+            });
+            return Promise.denodeify(blog.save.bind(blog))()
+            .then(function (blog) {
+        		    return blog;
+            });
+      }
+   });  
 }
 function update(id, data) {
-  return get(id)
-    .then(function (blog) {
-        blog.title = data.title,
-    	  blog.slug  = data.slug,
-        blog.author = data.author,
-    	  blog.image = data.image,
-        blog.caption = data.caption,
-        blog.short_description = data.short_description,
-    	  blog.description = data.description,
-    	  blog.category = data.category,
-    	  blog.tags = data.tags,
-    	  blog.date_created = data.date_created,
-    	  blog.status = data.status
-        
-        return Promise.denodeify(blog.save.bind(blog))()
-    })
-    .then(function (blog) {
-      return blog;
+
+ return Services.verifyBySlug(data.slug,id)
+  .then(function(res){
+      if(res != null)
+        return "Slug exist";
+      else{
+            return get(id)
+              .then(function (blog) {
+                  blog.title = data.title,
+              	  blog.slug  = data.slug,
+                  blog.author = data.author,
+              	  blog.image = data.image,
+                  blog.caption = data.caption,
+                  blog.short_description = data.short_description,
+              	  blog.description = data.description,              	  
+                  blog.category = data.category,
+                  blog.sub_category = data.sub_category,
+              	  blog.tags = data.tags,
+              	  blog.date_created = data.date_created,
+              	  blog.status = data.status
+                  
+                  return Promise.denodeify(blog.save.bind(blog))()
+              })
+              .then(function (blog) {
+                return blog;
+              });
+        }
     });
 }
   
@@ -96,6 +123,7 @@ module.exports = {
 	list:list,
   detail:detail,
   listByCategory:listByCategory,
+  listBySubCategory:listBySubCategory,
 	create:create,
 	update:update,
 	remove:remove,

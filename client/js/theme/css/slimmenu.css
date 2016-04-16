@@ -1,0 +1,116 @@
+/* icon mobile menu */
+.menu-collapser {
+    position: relative;
+    background-color: #f3f3f3;
+    color: #FFF;
+    width: 96%;
+    height: 48px;
+    line-height: 48px;
+    padding: 5px 2%;
+}
+.collapse-button {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    width: 40px;
+    background-color: #363b3f;
+    border-radius: 4px;
+    color: #FFFFFF;
+    padding: 7px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+
+    transform: translate(0, -50%);
+    -o-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
+
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box
+}
+.collapse-button:hover, .collapse-button:focus {
+    background-image: none;
+    background-color: #040404;
+    color: #FFF;
+}
+.collapse-button .icon-bar {
+    background-color: #F5F5F5;
+    border-radius: 1px 1px 1px 1px;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+    display: block;
+    height: 2px;
+    width: 18px;
+    margin: 2px 0;
+}
+/*menu*/
+#nav{
+	margin-bottom:20px;
+}
+ul.slimmenu {
+    display: inline-block;
+    position: relative;
+    cursor: default;
+    z-index: 500;
+}
+ul.slimmenu > li {
+    display: block;
+    float: left;
+}
+ul.slimmenu > li:last-child { margin-right: 0 }
+ul.slimmenu > li > a {
+	position: relative;
+    display: block;
+    z-index: 510;
+    padding: 0 15px;
+	height: 40px;
+    line-height: 40px;
+	
+	text-transform:uppercase;
+    color: #fff;
+	font-size:16px;
+ 
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    transition: all .3s ease;
+}
+ul.slimmenu > li a.active {
+	background-color:#5e6265;
+}
+ul.slimmenu > li.highlight{
+	float:right;
+	background-color:#42b7dd;
+}
+ul.slimmenu > li > a:hover {
+    background-color: #5e6265;
+    text-decoration: none;
+}
+ul.slimmenu li .sub-collapser { /*arrow on dropdown items removed*/
+    display:none;
+}
+ul.slimmenu li .sub-collapser:before {
+}
+ul.slimmenu.collapsed > li {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box
+}
+ul.slimmenu.collapsed > li > a {
+    display: block;
+    border-bottom: 1px solid #5c6064;	
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box
+}
+ul.slimmenu li .sub-collapser > i {
+    color: #333;
+    font-size: 18px;
+    display: inline-block;
+    vertical-align: middle;
+}

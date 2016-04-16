@@ -37,7 +37,8 @@ app.use(function(req, res, next) {
 
 //var dbUrl = process.env.MONGOLAB_URI || "mongodb://127.0.0.1:27017/ecommerce-app-db";
 var dbUrl = 'mongodb://ecommerce-app:123456@ds015849.mlab.com:15849/ecommerce-app-db';
-var port = process.env.PORT || 3003;
+
+var port = process.env.PORT || 3003;//replace with = 80; when you want to hide port number
 
 mongoose.connect(dbUrl);  
 
@@ -45,31 +46,37 @@ app.listen(port, function(){
       console.log('Listening on port ' + port); 
 });
 
+app.get('/', function(req, res){
+  console.log(req.params.name);
+  res.render('client/views/index.html');
+})
+
 app.get('/admin', function (req, res) {
     res.render('admin/views/index.html');
 });
-
-app.get('/client', function (req, res) {
-    res.render('client/views/index.html');
-});  
-
 
 app.get('/admin/partials/:name', function (req, res) {
     res.render('admin/views/partials/' + req.params.name);
 });
 
 
-app.get('/client/partials/:name', function (req, res) {
+app.get('/partials/:name', function (req, res) {
+  console.log(req.params.name);
 	  res.render('client/views/partials/' + req.params.name);
 });
   
 app.use('/admin/adminjs', express.static(__dirname + '/admin/js'));
-app.use('/client/clientjs', express.static(__dirname + '/client/js'));
+app.use('/assets', express.static(__dirname + '/client/js'));
   
 app.use('/admin/bower_components', express.static(__dirname + '/bower_components'));
-app.use('/client/bower_components', express.static(__dirname + '/bower_components'));
+app.use('/bower_components', express.static(__dirname + '/bower_components'));
   
 app.use('/images', express.static(__dirname+'/uploads/'));
+
+
+app.get('/:post', function(req, res){
+  res.render('client/views/index.html');
+})
 
   // Load Api routes
   apiRoutes(app, auth);

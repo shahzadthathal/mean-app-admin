@@ -10,7 +10,7 @@ var userSchema = new mongoose.Schema({
     phone: 		{type:String},
     image: 		{type:String}, 
     status: 	{type:Number, required:true, default:1},
-    role: 		{type:Number, required:true, default:2}
+    role: 		{type:Number, required:true, default:1}
   });
 
 //userSchema.set('autoIndex', false); 

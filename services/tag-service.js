@@ -3,7 +3,7 @@
 
 var Promise = require('promise');
 var Models  =  require('../models');
-
+var Services = require('./common-service.js');
 
 function list() {
     return Promise.denodeify(Models.TagModel.find.bind(Models.TagModel))()
@@ -20,15 +20,23 @@ function detail(tag){
 }
 
 function create(data){
-	var tagModel = new Models.TagModel({
-		title: data.title,
-		description: data.description
-	});
-	
-	return Promise.denodeify(tagModel.save.bind(tagModel))()
-    .then(function (tagModel) {
-		    return tagModel;
-    });
+
+  return Services.getBySlug(data.slug)
+  .then(function(res){
+      if(res != null)
+        return "Slug exist";
+      else{
+            	var tagModel = new Models.TagModel({
+            		title: data.title,
+            		description: data.description
+            	});
+            	
+            	return Promise.denodeify(tagModel.save.bind(tagModel))()
+                .then(function (tagModel) {
+            		    return tagModel;
+                });
+          }
+      });        
 }
 
 function getByTag(tag){
@@ -39,15 +47,24 @@ function getByTag(tag){
 }
 
 function update(id, data) {
-  return get(id)
-    .then(function (tag) {
-        tag.title = data.title,
-        tag.description = data.description        
-        return Promise.denodeify(tag.save.bind(tag))()
-    })
-    .then(function (tag) {
-      return tag;
-    });
+
+  return Services.verifyBySlug(data.slug,id)
+  .then(function(res){
+      if(res != null)
+        return "Slug exist";
+      else{
+
+              return get(id)
+                .then(function (tag) {
+                    tag.title = data.title,
+                    tag.description = data.description        
+                    return Promise.denodeify(tag.save.bind(tag))()
+                })
+                .then(function (tag) {
+                  return tag;
+                });
+          }
+      });
 }
   
 function remove(id) {

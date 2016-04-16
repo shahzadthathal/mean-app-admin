@@ -10,8 +10,10 @@ var blogSchema = mongoose.Schema({
 	caption:{type:String},
 	short_description:{ type:String, required:true },
 	description:{ type:String, required:true },
-	category:{ type:mongoose.Schema.Types.ObjectId, ref:'BlogCategory' },
+	category:{ type:mongoose.Schema.Types.ObjectId, ref:'Category' },
+	sub_category:{ type:mongoose.Schema.Types.ObjectId, ref:'Category', default:null},
 	date_created:{ type:Date, default:Date() },
-	tags: [String]
+	tags: [String],
+	post_type:{type:String, default:'blog'}
 });
 module.exports = mongoose.model('Blogs', blogSchema);

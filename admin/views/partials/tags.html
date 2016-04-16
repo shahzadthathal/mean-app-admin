@@ -42,7 +42,7 @@
                         <tbody>
                         <tr ng-repeat="tag in tags">
                             <td>{{$index+1}}</td>
-                            <td>{{ tag.title }}</td>							
+                            <td><a href="#/admin/tag-related/{{tag.title}}">{{ tag.title }}</a></td>							
                             <td>{{ tag.description }}</td>                           
                             <td>
  <button class="btn btn-success btn-sm" type="button" ng-click="showModal(tag)">

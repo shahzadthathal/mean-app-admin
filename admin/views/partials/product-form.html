@@ -63,13 +63,23 @@
  </div>
 
 <div class="form-group" ng-class="{ 'has-error' : productForm.category.$invalid && !productForm.category.$pristine }">
- <label>Product Category</label>
+ <label>Category</label>
 <select name="category" class="form-control" id="category" ng-model="product.category" required>
-    <option ng-repeat="category in productCatsList" value="{{category._id}}">
+    <option ng-repeat="category in catsList" value="{{category._id}}">
     {{category.title}}</option>
 </select>
- <p ng-show="productForm.category.$invalid && !productForm.category.$pristine" class="help-block">Product Category is required.</p>
+ <p ng-show="productForm.category.$invalid && !productForm.category.$pristine" class="help-block"> Category is required.</p>
 </div>
+
+<div class="form-group" ng-class="{ 'has-error' : productForm.sub_category.$invalid && !productForm.sub_category.$pristine }">
+ <label>Sub Category</label>
+<select name="sub_category" class="form-control" id="sub_category" ng-model="product.sub_category">
+    <option ng-repeat="subcat in subCatList" value="{{subcat._id}}">
+    {{subcat.title}}</option>
+</select>
+</div>
+
+
 
 <div class="form-group" ng-class="{ 'has-error' : productForm.caption.$invalid && !productForm.caption.$pristine }">
     <label>Product Caption</label>

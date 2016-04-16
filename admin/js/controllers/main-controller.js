@@ -1,4 +1,4 @@
-var MainCtrl = adminApp.controller('MainCtrl', ['$scope', 'UserSrvc', '$location', '$route', '$window', function($scope, UserSrvc, $location, $route, $window){
+var MainCtrl = adminApp.controller('MainCtrl', ['$scope', 'UserSrvc', '$location', '$route', '$window', 'Notification', function($scope, UserSrvc, $location, $route, $window, Notification){
 
 	if (!$window.sessionStorage.token || $window.sessionStorage.token == 'null') { 
 		$location.url('/admin/login')
@@ -8,7 +8,6 @@ var MainCtrl = adminApp.controller('MainCtrl', ['$scope', 'UserSrvc', '$location
 	$scope.user = {};
 	UserSrvc.me()
   		.then(function (user){
-  			console.log("MainCtrl: ",user);
     		$scope.user = user;
   		});
 

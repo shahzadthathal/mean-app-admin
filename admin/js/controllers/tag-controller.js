@@ -54,7 +54,7 @@ adminApp.controller('TagCtrl', ['$scope', 'UserSrvc', 'TagSrvc', '$location', '$
  		
 }]);
 
-adminApp.controller('TagModalInstanceCtrl', function ($scope, tag, $http, $uibModalInstance, TagSrvc, usSpinnerService) {
+adminApp.controller('TagModalInstanceCtrl', function ($scope, tag, $http, $uibModalInstance, TagSrvc, usSpinnerService, Notification) {
 
 	$scope.tag = tag;
 	$scope.submitForm = function(tagForm){
@@ -66,8 +66,14 @@ adminApp.controller('TagModalInstanceCtrl', function ($scope, tag, $http, $uibMo
 				
 				return TagSrvc.update($scope.tag)
 					   .then(function(result){
+
 					   		usSpinnerService.stop('spinner-1');
-				   			$uibModalInstance.close();
+					   		if(result == 'Slug exist')
+					   			Notification.error({message: 'Title already taken, please choose another!', delay: 3000});
+					   		else{
+					   			Notification.success({message: 'Item updated successfully!', delay: 2000});
+				   				$uibModalInstance.close();
+				   			}
 					   })
 					   .catch(function(e){
 					   	    usSpinnerService.stop('spinner-1');
@@ -79,8 +85,13 @@ adminApp.controller('TagModalInstanceCtrl', function ($scope, tag, $http, $uibMo
 
 				return TagSrvc.create($scope.tag)
 				   .then(function(result){
-				   		usSpinnerService.stop('spinner-1');
-				   		$uibModalInstance.close();	   
+				   	usSpinnerService.stop('spinner-1');
+				   		if(result == 'Slug exist')
+				   			Notification.error({message: 'Slug already taken, please choose another!', delay: 3000});
+				   		else{
+				   			Notification.success({message: 'Item created successfully!', delay: 2000});
+			   				$uibModalInstance.close();
+			   			}	   
 				   })
 				   .catch(function(e){
 					   	    usSpinnerService.stop('spinner-1');

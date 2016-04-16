@@ -15,10 +15,8 @@
     $scope.shopName = AppConfig.APP_NAME;
     $rootScope.metaservice = MetaService;
     $rootScope.metaservice.set($scope.shopName+"| About us","desc 123","blah blah");
-    
-    $scope.pageData = {};
-
-     $http.get(AppConfig.SERVERURL + '/api/page/detail/about-us')
+   $scope.breadcrumbs = 'About us';
+     $http.get(AppConfig.SERVERURL + '/api/page/detail/about')
       .then(function (result) {
         $scope.pageData =  result.data;
         //return $scope.pageData;

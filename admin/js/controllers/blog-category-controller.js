@@ -54,7 +54,7 @@ adminApp.controller('BlogCategoryCtrl', ['$scope', 'UserSrvc', 'BlogCategorySrvc
  		
 }]);
 
-adminApp.controller('BlogCategoryModalInstanceCtrl', function ($scope, blogcategory, $http, $uibModalInstance, BlogCategorySrvc, usSpinnerService) {
+adminApp.controller('BlogCategoryModalInstanceCtrl', function ($scope, blogcategory, $http, $uibModalInstance, BlogCategorySrvc, usSpinnerService, Notification) {
 
 	$scope.blogcategory = blogcategory;
 	$scope.submitForm = function(blogCategoryForm){
@@ -66,8 +66,13 @@ adminApp.controller('BlogCategoryModalInstanceCtrl', function ($scope, blogcateg
 				
 				return BlogCategorySrvc.update($scope.blogcategory)
 					   .then(function(result){
-					   		usSpinnerService.stop('spinner-1');
-				   			$uibModalInstance.close();
+					   	usSpinnerService.stop('spinner-1');
+					   		if(result == 'Slug exist')
+					   			Notification.error({message: 'Slug already taken, please choose another!', delay: 3000});
+					   		else{
+					   			Notification.success({message: 'Item updated successfully!', delay: 2000});
+				   				$uibModalInstance.close();
+				   			}
 					   })
 					   .catch(function(e){
 					   	    usSpinnerService.stop('spinner-1');
@@ -79,8 +84,13 @@ adminApp.controller('BlogCategoryModalInstanceCtrl', function ($scope, blogcateg
 
 				return BlogCategorySrvc.create($scope.blogcategory)
 				   .then(function(result){
-				   		usSpinnerService.stop('spinner-1');
-				   		$uibModalInstance.close();	   
+				   	usSpinnerService.stop('spinner-1');
+				   		if(result == 'Slug exist')
+				   			Notification.error({message: 'Slug already taken, please choose another!', delay: 3000});
+				   		else{
+				   			Notification.success({message: 'Item created successfully!', delay: 2000});
+			   				$uibModalInstance.close();
+			   			}
 				   })
 				   .catch(function(e){
 					   	    usSpinnerService.stop('spinner-1');

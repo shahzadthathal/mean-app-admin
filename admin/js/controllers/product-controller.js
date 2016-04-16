@@ -10,20 +10,18 @@ adminApp.controller('ProductCtrl', ['$scope', 'UserSrvc', 'ProductSrvc', '$locat
 
    
 	$scope.showModal = function (product = null) {
-		
 		usSpinnerService.spin('spinner-1');
-
 	  	var modalInstance = $uibModal.open({
 	      templateUrl: 'partials/product-form.html',
 	      controller: 'ProductModalInstanceCtrl',
 	      resolve: {
                 product: function () {
+                	usSpinnerService.stop('spinner-1');
                     return product;
                 }
             }
 
 	    });
-	    usSpinnerService.stop('spinner-1');
 	};
 
 	$scope.deleteItem = function(model){
@@ -60,11 +58,11 @@ adminApp.controller('ProductCtrl', ['$scope', 'UserSrvc', 'ProductSrvc', '$locat
  		
 }]);
 
-adminApp.controller('ProductModalInstanceCtrl', function ($scope, product, $http, $uibModalInstance, ProductSrvc, usSpinnerService, ProductCategorySrvc, TagSrvc) {
+adminApp.controller('ProductModalInstanceCtrl', function ($scope, product, $http, $uibModalInstance, ProductSrvc, usSpinnerService, CategorySrvc, TagSrvc, Notification) {
 
     var uploadedImageName = 'noimage.png';
 	$scope.product = product;	
-	$scope.productCatsList = $scope.tagList = [];
+	$scope.catsList =  $scope.subCatList = $scope.tagList = [];
 	 
 	if($scope.product == null){
 		//console.log('product is null',$scope.product);
@@ -87,7 +85,7 @@ adminApp.controller('ProductModalInstanceCtrl', function ($scope, product, $http
 		    	})
 		     	.then(function (result) {
 		     			uploadedImageName = result.data.imageName;
-		     			console.log("uploaded image name",uploadedImageName);
+		     			//console.log("uploaded image name",uploadedImageName);
 		      	});
 	};
 
@@ -104,11 +102,16 @@ adminApp.controller('ProductModalInstanceCtrl', function ($scope, product, $http
 				return ProductSrvc.update($scope.product)
 					   .then(function(result){
 					   		usSpinnerService.stop('spinner-1');
-				   			$uibModalInstance.close();
+					   		if(result == 'Slug exist')
+					   			Notification.error({message: 'Slug already taken, please choose another!', delay: 3000});
+					   		else{
+					   			Notification.success({message: 'Item updated successfully!', delay: 2000});
+				   				$uibModalInstance.close();
+				   			}
 					   })
 					   .catch(function(e){
 					   	    usSpinnerService.stop('spinner-1');
-					   	    $uibModalInstance.close();
+					   	    //$uibModalInstance.close();
 					   		console.log(e);
 					   });
 			}
@@ -117,8 +120,13 @@ adminApp.controller('ProductModalInstanceCtrl', function ($scope, product, $http
 				$scope.product.image = uploadedImageName;			
 				return ProductSrvc.create($scope.product)
 				   .then(function(result){
-				   		usSpinnerService.stop('spinner-1');
-				   		$uibModalInstance.close();	   
+				   	usSpinnerService.stop('spinner-1');
+				   		if(result == 'Slug exist')
+				   			Notification.error({message: 'Slug already taken, please choose another!', delay: 3000});
+				   		else{
+				   			Notification.success({message: 'Item created successfully!', delay: 2000});
+			   				$uibModalInstance.close();
+			   			}	   
 				   })
 				   .catch(function(e){
 					   	    usSpinnerService.stop('spinner-1');
@@ -134,9 +142,9 @@ adminApp.controller('ProductModalInstanceCtrl', function ($scope, product, $http
     	$uibModalInstance.dismiss('cancel');
   	};
 
-  	    ProductCategorySrvc.getProductCategory()
+  	    CategorySrvc.getParentProductCategory('product')
 		  .then(function(result){
-		  	$scope.productCatsList = result;
+		  	$scope.catsList = result;
 		  	return TagSrvc.getTags();
 		  })
 		  .then(function(tags){
@@ -144,7 +152,21 @@ adminApp.controller('ProductModalInstanceCtrl', function ($scope, product, $http
 		  	return $scope.tagList;
 		  });
 
-		
+		  $scope.$watch('product.category', function(newValue, oldValue, scope) {
+              if(newValue != oldValue){
+              	CategorySrvc.getSubCategory($scope.product.category)
+              	.then(function(result){
+              		  $scope.subCatList =  result;
+              	});
+              }
+        });
+
+		if($scope.product){
+			CategorySrvc.getSubCategory($scope.product.category)
+              	.then(function(result){
+              		  $scope.subCatList =  result;
+              	});
+		}
 
 
 });

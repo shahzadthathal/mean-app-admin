@@ -6,6 +6,12 @@ adminApp.factory('ProductSrvc', function ($http) {
         return result.data;
       });
     },
+    getProductsByTag: function(tag){
+      return $http.get('/api/product/list-by-tag/'+ tag)
+      .then(function (result) {
+        return result.data;
+      });
+    },
     create: function (product) {
       return $http.post('/api/product/create', product)
       .then(function (result) {

@@ -1,8 +1,20 @@
- <div class="list-group">
-  <div ng-repeat='category in blogcats'>
 
-	<a href="#/blog-category/{{category.slug}}" class="list-group-item">{{category.title}}</a>
+    <div id="cssmenu">
+			<ul>
+			   <li><a href='/'><span>Home</span></a></li>
+			   	
+			   <li class="{{slug===category.slug ? 'active has-sub' : 'has-sub'}}" ng-repeat='category in blogParentCats track by $index'>
+				<a ng-if="category.parentID == null" href="/{{category.slug}}" class="list-group-item">
+					<span>{{category.title}}</span>
+				</a>
 
+				<ul>
+					<li ng-if='subcategory.parentID == category._id' ng-repeat='subcategory in blogSubCats track by $index' >
+					<a href="/{{subcategory.slug}}">
+					<span>{{subcategory.title}}</span></a>
+					</li>
+				</ul>
+			   	
+			   </li>
+			</ul>
 	</div>
-
-</div>

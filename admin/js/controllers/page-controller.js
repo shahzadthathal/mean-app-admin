@@ -54,7 +54,7 @@ adminApp.controller('PageCtrl', ['$scope', 'UserSrvc', 'PageSrvc', '$location', 
  		
 }]);
 
-adminApp.controller('PageModalInstanceCtrl', function ($scope, page, $http, $uibModalInstance, PageSrvc, usSpinnerService) {
+adminApp.controller('PageModalInstanceCtrl', function ($scope, page, $http, $uibModalInstance, PageSrvc, usSpinnerService, Notification) {
 
 	$scope.page = page;
 	//$scope.htmlVariable;
@@ -68,7 +68,12 @@ adminApp.controller('PageModalInstanceCtrl', function ($scope, page, $http, $uib
 				return PageSrvc.update($scope.page)
 					   .then(function(result){
 					   		usSpinnerService.stop('spinner-1');
-				   			$uibModalInstance.close();
+					   		if(result == 'Slug exist')
+					   			Notification.error({message: 'Slug already taken, please choose another!', delay: 3000});
+					   		else{
+					   			Notification.success({message: 'Item updated successfully!', delay: 2000});
+				   				$uibModalInstance.close();
+				   			}
 					   })
 					   .catch(function(e){
 					   	    usSpinnerService.stop('spinner-1');
@@ -80,8 +85,13 @@ adminApp.controller('PageModalInstanceCtrl', function ($scope, page, $http, $uib
 
 				return PageSrvc.create($scope.page)
 				   .then(function(result){
-				   		usSpinnerService.stop('spinner-1');
-				   		$uibModalInstance.close();	   
+				   	usSpinnerService.stop('spinner-1');
+				   		if(result == 'Slug exist')
+				   			Notification.error({message: 'Slug already taken, please choose another!', delay: 3000});
+				   		else{
+				   			Notification.success({message: 'Item created successfully!', delay: 2000});
+			   				$uibModalInstance.close();
+			   			} 
 				   })
 				   .catch(function(e){
 					   	    usSpinnerService.stop('spinner-1');

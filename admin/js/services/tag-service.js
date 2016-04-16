@@ -6,6 +6,12 @@ adminApp.factory('TagSrvc', function ($http) {
         return result.data;
       });
     },
+    getBlogsByTag: function(tag){
+       $http.get(AppConfig.SERVERURL + '/api/blog/list-by-tag/'+ tag)
+      .then(function (result) {
+        $scope.blogs =  result.data;
+       });
+    },
     create: function (tag) {
       return $http.post('/api/tag/create', tag)
       .then(function (result) {

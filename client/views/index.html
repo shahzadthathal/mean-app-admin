@@ -2,7 +2,7 @@
 <html ng-app="clientApp">
   <head>	
 
-    <!-- <base href="/mean-app-client"> -->
+     <base href="/client">
     
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,81 +12,76 @@
     <meta name="description" content="{{ metaservice.metaDescription() }}" />
     <meta name="keywords" content="{{ metaservice.metaKeywords() }}" />
 
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel='stylesheet' href='bower_components/bootstrap/dist/css/bootstrap.css' />
-    <link rel='stylesheet' href='bower_components/angular-loading-bar/build/loading-bar.css' />
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <!--<link rel="stylesheet" href="styles/main.css">-->
-	<link rel="stylesheet" href="clientjs/theme/shop-homepage.css">
-    <!-- <link rel="stylesheet" href="styles/product.css"> -->
 
-    <link rel='stylesheet' href='bower_components/angular-loading-bar/build/loading-bar.min.css' type='text/css' media='all' />
 
-    <!-- endbuild -->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400|Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel='stylesheet' href='bower_components/angular-loading-bar/build/loading-bar.min.css' type='text/css' media='all' />
+
+
+<link href="assets/theme/css/style.css" rel="stylesheet" type="text/css" />
+<link href="assets/theme/css/responsive.css" rel="stylesheet" type="text/css" />
+<link href="assets/theme/css/slimmenu.css" rel="stylesheet" type="text/css">
+<link href="assets/theme/css/cssmenu.css" rel="stylesheet" type="text/css" />
+
+
   </head>
   <body>
-    <!--[if lte IE 8]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#/client">Home</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#/blog">Blog</a>
-                    </li>
-					<li>
-						<a href="#/payment-methods"> Payment Methods </a>
-					</li>
-                    <li>
-                        <a href="#/contact">Contact</a>
-                    </li>
-					<li>
-                        <a href="#/about"> About us</a>
-                    </li>
-
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <!-- Page Content -->
-    <div class="container">
+   
     
+<div id="wrap">
+
+  <div id="top-container" class="clearfix">
+    <div id="top"><span class="top-usp">Discover every day your personal fashion tips and fashion inspiration</span>
+    </div>
+  </div>
+
+   <div id="container">
+    <div id="header" class="clearfix">
+      <div id="logo"><a href="/"> <img src="assets/theme/image/logo.png" alt="Web Shop" width="296" height="65" /> </a> </div>
+    </div>
+    
+    <div id="nav">
+      <ul id="navigation" class="slimmenu">
+        <li> <a href="/">Home</a> </li>
+        <li> <a href="/blog">Blog</a> </li>
+        <li> <a href="/payment-methods">Payment Methods</a></li>
+        <li> <a title="Merken" href="/contact">Contact</a></li>
+        <li> <a title="Webshops" href="/about">About</a></li>       
+      </ul>
+      <ul id="navigation" class="slimmenu rightItem">
+        <li style="background:#4ba5b0;"> <a title="mid season sale" href=""></a> </li>
+      </ul>
+    </div>
+
     <span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
 
 	<!-- All templates will load here -->
 	<div ng-view=""></div>
-    
-	</div>
-    <!-- /.container -->
 
-    <div class="container">
-    <hr>
-    <footer>
-            <p>Copyright &copy; Shop name 2016</p>
-    </footer>
+
+    </div>
+<!-- end wrap-->
+<div id="footer-container" class="clearfix">
+  <div id="footer">
+    <div class="column">
+      <h3>Help</h3>
+      <ul>
+        <li><a href="/payment-methods">Payment Methods</a></li>
+        <li><a href="/about">About us</a></li>
+        <li><a href="/contact">Contact us</a></li>
+        <li><a href="/term">Terms & Conditions</a></li>
+      </ul>
     </div>
     
+    <div class="copy-rights-cont">
+      <div class="copy-rights">Copyright © 2016 WebShop.</div>
+    </div>
+  </div>
+</div>
+
+    
+	
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -112,42 +107,45 @@
     <script src="bower_components/spin.js/spin.js"></script>
     <script src="bower_components/angular-spinner/angular-spinner.js"></script>
     <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.min.js"></script>
+    
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="clientjs/app.js"></script>
-        <script src="clientjs/services/meta-service.js"></script>
-        <script src="clientjs/controllers/main.js"></script>
-        <script src="clientjs/controllers/about.js"></script>
-        <script src="clientjs/controllers/product-detail.js"></script>
-        <script src="clientjs/controllers/product-category.js"></script>
-        <script src="clientjs/controllers/tag.js"></script>
-        <script src="clientjs/controllers/blog.js"></script>
-        <script src="clientjs/controllers/blog-detail.js"></script>
-        <script src="clientjs/controllers/blog-category.js"></script>
-        <script src="clientjs/controllers/payment-methods.js"></script>
-        <script src="clientjs/controllers/contact.js"></script>
+        <script src="assets/app.js"></script>
+        <script src="assets/services/meta-service.js"></script>
+        <script src="assets/controllers/main.js"></script>
+        <script src="assets/controllers/common.js"></script>
+        <script src="assets/controllers/tag.js"></script>
+        <script src="assets/controllers/blog.js"></script>
+        
+        <script src="assets/controllers/about.js"></script>
+        <script src="assets/controllers/term.js"></script>
+        
+        <script src="assets/controllers/payment-methods.js"></script>
+        <script src="assets/controllers/contact.js"></script>
       
 
         <!-- Filters -->
-        <script src="clientjs/filters/cleanhtml-filter.js"></script>
-        <script src="clientjs/filters/pagination-filter.js"></script>
+        <script src="assets/filters/cleanhtml-filter.js"></script>
+        <script src="assets/filters/pagination-filter.js"></script>
 
 		<!-- Directives -->
-        <script src="clientjs/directives/login-directive.js"></script>
-        <script src="clientjs/directives/product-category-directive.js"></script>
-		<script src="clientjs/directives/blog-category-directive.js"></script>
+        <script src="assets/directives/login-directive.js"></script>
+        <script src="assets/directives/product-category-directive.js"></script>
+		<script src="assets/directives/blog-category-directive.js"></script>
+        <script src="assets/directives/social-media-directive.js"></script>
         
 		<!-- Services -->
 
         
 
-        <!-- <script src="clientjs/services/product-service.js"></script>
-        <script src="clientjs/services/product-by-category-service.js"></script>
+        <!-- <script src="assets/services/product-service.js"></script>
+        <script src="assets/services/product-by-category-service.js"></script>
 
-        <script src="clientjs/services/product-category-service.js"></script>
-        <script src="clientjs/services/product-category-detail-service.js"></script>
+        <script src="assets/services/product-category-service.js"></script>
+        <script src="assets/services/product-category-detail-service.js"></script>
  -->
 
         <!-- endbuild -->

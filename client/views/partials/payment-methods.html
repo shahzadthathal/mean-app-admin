@@ -1,23 +1,23 @@
 
-<title>{{pageData.meta_title}}</title>
-<meta name="description" content="{{pageData.meta_description}}">
-<meta name="keywords" content="{{pageData.meta_keywords}}">
+<div id="main">
+<div id="content">
+        <div id="breadcrumbs">
+          <ol>
+            <li> <a href="/"> <span itemprop="name">Home</span></a> </li>
+            <li>{{breadcrumbs}}</li>
+          </ol>
+        </div>
 
-
-<div class="row">
-
- <div class="col-md-3">
-<p class="lead"></p>
- <div product-category-directive></div>
+<!-- <div id="sidebar">
+<div product-category-directive></div>
+<div social-media-directie></div>
+</div>
+ -->
+<div class="trends-overview-page">
+            <h1>{{pageData.title}}</h1>
+            <p ng-bind-html="pageData.description | cleanHTML"></p>
+  </div>
 
 </div>
-
-<div class="col-md-9">
-
-
-<h1>{{pageData.title}}</h1>
-
-<p ng-bind-html="pageData.description | cleanHTML"></p>
 </div>
 
-</div>

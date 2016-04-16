@@ -28,12 +28,22 @@ module.exports.listbycategory = function(req, res){
 
 module.exports.detailByCategorySlug = function(req, res){
 	
-	Services.BlogCategorySrvc.detail(req.params.slug)
+	Services.CategorySrvc.detail(req.params.slug)
 	.then(function(category){
-		Services.BlogSrvc.listByCategory(category._id)
-		.then(function(result){
-			res.json(result);
-		});
+
+		if(category.parentID == null){
+
+			Services.BlogSrvc.listByCategory(category._id)
+			.then(function(result){
+				res.json(result);
+			});
+		}
+		else{
+			Services.BlogSrvc.listBySubCategory(category._id)
+			.then(function(result){
+				res.json(result);
+			});
+		}
 
 	});
 }

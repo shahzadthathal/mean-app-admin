@@ -6,7 +6,9 @@
   module.exports = function(app, auth) {
     
 
-  	
+  	app.get('/api/common/:slug', Controllers.CommonCtrl.findBySlug);
+
+
   	app.post('/api/contact/sendemail', Controllers.EmailCtrl.send);
 
 	// User Routes  
@@ -16,11 +18,19 @@
 	app.put('/api/users/update/:id', auth.requiresLogin, Controllers.UserCtrl.update);
 	
 	//Product Category Routes
-	app.get('/api/product-category/list', Controllers.ProductCategoryCtrl.list);
-	app.get('/api/product-category/detail/:slug', Controllers.ProductCategoryCtrl.detail);
-	app.post('/api/product-category/create', auth.requiresLogin, Controllers.ProductCategoryCtrl.create);
-	app.put('/api/product-category/update/:id', auth.requiresLogin, Controllers.ProductCategoryCtrl.update);
-    app.delete('/api/product-category/delete/:id', auth.requiresLogin, Controllers.ProductCategoryCtrl.delete);
+	app.get('/api/category/list', Controllers.CategoryCtrl.list);
+	app.get('/api/category/parent-cat-list', Controllers.CategoryCtrl.parentCatList);
+	app.get('/api/category/parent-product-cat-list/:type', Controllers.CategoryCtrl.parentProductCatList);
+	app.get('/api/category/parent-blog-cat-list/:type', Controllers.CategoryCtrl.parentBlogCatList);
+	app.get('/api/category/sub-cat-list/:id', Controllers.CategoryCtrl.subCatList);
+
+	app.get('/api/category/cat-list-by-type/:type', Controllers.CategoryCtrl.categoryListByType);
+
+
+	app.get('/api/category/detail/:slug', Controllers.CategoryCtrl.detail);
+	app.post('/api/category/create', auth.requiresLogin, Controllers.CategoryCtrl.create);
+	app.put('/api/category/update/:id', auth.requiresLogin, Controllers.CategoryCtrl.update);
+    app.delete('/api/category/delete/:id', auth.requiresLogin, Controllers.CategoryCtrl.delete);
 	
 	
 	// Product Routes

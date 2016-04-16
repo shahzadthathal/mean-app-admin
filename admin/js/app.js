@@ -6,14 +6,18 @@ var adminApp = angular.module('adminApp', [
 	'ui.bootstrap',
 	'angularSpinner',
 	'textAngular',
-	'angular-loading-bar'
+	'angular-loading-bar',
+	'ui-notification'
 	]);
 
-//adminApp.constant('SERVERURL', 'http://localhost:3003');
-adminApp.constant('SERVERURL', 'https://mean-app-admin.herokuapp.com');
+adminApp.constant('SERVERURL', 'http://localhost:3003');
+//adminApp.constant('SERVERURL', 'https://mean-app-admin.herokuapp.com');
 
 adminApp.config(['$routeProvider', function($routeProvider){
 		$routeProvider
+		   .when('/',{
+		   		redirectTo: '/admin/dashboard'
+		   })
 			.when('/admin', {
 				redirectTo: '/admin/dashboard'
 			})
@@ -29,13 +33,18 @@ adminApp.config(['$routeProvider', function($routeProvider){
 				templateUrl: 'partials/products.html',
 				controller: 'ProductCtrl'
 			})
-			.when('/admin/product-category-manager', {
-				templateUrl: 'partials/products-category.html',
-				controller: 'ProductCategoryCtrl'
+			.when('/admin/category-manager', {
+				templateUrl: 'partials/category.html',
+				controller: 'CategoryCtrl'
 			})
 			.when('/admin/tag-manager',{
 				templateUrl: 'partials/tags.html',
 				controller: 'TagCtrl'
+			})
+
+			.when('/admin/tag-related/:slug',{
+				templateUrl: 'partials/tag_related.html',
+				controller: 'TagRelatedCtrl'
 			})
 			.when('/admin/blog-manager',{
 				templateUrl: 'partials/blogs.html',

@@ -9,8 +9,8 @@
            
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Product Category Manager
-                     <button type="button" class="btn btn-info pull-right" ng-click="showModal()">Add Product Cateogry
+                    <h1 class="page-header">Category Manager
+                     <button type="button" class="btn btn-info pull-right" ng-click="showModal()">Add  Cateogry
                      </button>
                      </h1>
                 </div>
@@ -34,19 +34,21 @@
                         <thead>
                         <tr>
                             <th>SN</th>
+                            <th>Parent</th>
                             <th>Title</th>
 							<th>Slug</th>
-                            <th>Description</th>
+                            <th>Type</th>
                             <th>Status</th>
                             <th> Actions </th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="category in productcats">
+                        <tr ng-repeat="category in cats">
                             <td>{{$index+1}}</td>
+                            <td>{{category.parentID != null ? "Child": "Parent"}}</td>
                             <td>{{ category.title }}</td>
 							<td>{{ category.slug }}</td>
-                            <td>{{ category.description }}</td>
+                            <td>{{ category.type }}</td>
                             <td>{{ category.status =='1' ? "Active" : "Inactive" }}</td>
                             <td>
  <button class="btn btn-success btn-sm" type="button" ng-click="showModal(category)">

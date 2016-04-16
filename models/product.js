@@ -15,8 +15,10 @@ var productSchema = mongoose.Schema({
 	caption:{type:String},
 	short_description:{ type:String, required:true },
 	description:{ type:String, required:true },
-	category:{ type:mongoose.Schema.Types.ObjectId, ref:'ProductCategory' },
+	category:{ type:mongoose.Schema.Types.ObjectId, ref:'Category' },
+	sub_category:{ type:mongoose.Schema.Types.ObjectId, ref:'Category', default:null},
 	date_created:{ type:Date, default:Date() }, //select: false
-	tags: [String]
+	tags: [String],
+	post_type:{type:String, default:'product'}
 });
 module.exports = mongoose.model('Products', productSchema);

@@ -13,14 +13,16 @@ var clientApp = angular.module('clientApp', [
     'ngResource',
     'ngRoute',
     'angularSpinner',
-    'angular-loading-bar'
+    'angular-loading-bar',
+    'ngStorage'
   ]);
   
-  //'SERVERURL': 'http://localhost:3003',
+
   clientApp.constant('AppConfig', {
     'APP_NAME' : 'Web Shop',
     'APP_VERSION' : '1.0.0',
-    'SERVERURL': 'https://mean-app-admin.herokuapp.com',
+    'SERVERURL': 'http://localhost:3003',
+    //'SERVERURL': 'https://mean-app-admin.herokuapp.com',
     'GOOGLE_ANALYTICS_ID' : '',
     'BASE_URL' : '',
     'META_TITLE': 'Web Shop'
@@ -32,29 +34,9 @@ var clientApp = angular.module('clientApp', [
         templateUrl: 'partials/main.html',
         controller: 'MainCtrl'
       })
-      .when('/product-detail/:pslug', {
-        templateUrl:  'partials/product-detail.html',
-        controller:   'ProductDetailCtrl'
-      })
-      .when('/product-category/:cslug', {
-        templateUrl: 'partials/product-category.html',
-        controller: 'ProductCategoryCtrl'        
-      })
-      .when('/tag/:tslug', {
-        templateUrl: 'partials/tag.html',
-        controller: 'TagCtrl'
-      })
       .when('/blog', {
         templateUrl: 'partials/blog.html',
         controller: 'BlogCtrl'
-      })
-      .when('/blog-detail/:bslug', {
-        templateUrl: 'partials/blog-detail.html',
-        controller: 'BlogDetailCtrl'
-      })
-      .when('/blog-category/:bcslug', {
-        templateUrl: 'partials/blog-category.html',
-        controller: 'BlogCategoryCtrl'
       })
       .when('/payment-methods', {
         templateUrl: 'partials/payment-methods.html',
@@ -68,12 +50,20 @@ var clientApp = angular.module('clientApp', [
         templateUrl: 'partials/about.html',
         controller: 'AboutCtrl'
       })
+      .when('/term', {
+        templateUrl: 'partials/term.html',
+        controller: 'TermCtrl'
+      })
+      .when('/:slug',{
+        templateUrl: 'partials/common.html',
+        controller: 'CommonCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
 
     // use the HTML5 History API
-      //$locationProvider.html5Mode(true);
+      $locationProvider.html5Mode(true);
      
      // prevent preflight request for cross-domain Ajax calls
     $httpProvider.defaults.useXDomain = true;

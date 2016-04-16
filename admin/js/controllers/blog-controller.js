@@ -18,11 +18,11 @@ adminApp.controller('BlogCtrl', ['$scope', 'UserSrvc', 'BlogSrvc', '$location', 
 	      controller: 'BlogModalInstanceCtrl',
 	      resolve: {
                 blog: function () {
+                	usSpinnerService.stop('spinner-1');
                     return blog;
                 }
             }
 	    });
-	    usSpinnerService.stop('spinner-1');
 	};
 
 	$scope.deleteItem = function(model){
@@ -58,11 +58,11 @@ adminApp.controller('BlogCtrl', ['$scope', 'UserSrvc', 'BlogSrvc', '$location', 
  		
 }]);
 
-adminApp.controller('BlogModalInstanceCtrl', function ($scope, blog, $http, $uibModalInstance, BlogSrvc, usSpinnerService, BlogCategorySrvc, TagSrvc) {
+adminApp.controller('BlogModalInstanceCtrl', function ($scope, blog, $http, $uibModalInstance, BlogSrvc, usSpinnerService, CategorySrvc, TagSrvc, Notification) {
 
     var uploadedImageName = 'noimage.png';
-	$scope.blog = blog;	
-	$scope.blogCatsList = $scope.tagList = [];
+	$scope.blog = blog;
+	$scope.catsList =  $scope.subCatList = $scope.tagList = [];
 
 	if($scope.blog == null){
 		console.log('blog is null',$scope.blog);
@@ -85,7 +85,7 @@ adminApp.controller('BlogModalInstanceCtrl', function ($scope, blog, $http, $uib
 		    	})
 		     	.then(function (result) {
 		     			uploadedImageName = result.data.imageName;
-		     			console.log("uploaded image name",uploadedImageName);
+		     			//console.log("uploaded image name",uploadedImageName);
 		      	});
 	};
 
@@ -98,11 +98,16 @@ adminApp.controller('BlogModalInstanceCtrl', function ($scope, blog, $http, $uib
 			console.log('submitted image name',uploadedImageName);
 
 			if($scope.blog._id){
-				
+
 				return BlogSrvc.update($scope.blog)
 					   .then(function(result){
-					   		usSpinnerService.stop('spinner-1');
-				   			$uibModalInstance.close();
+					   	usSpinnerService.stop('spinner-1');
+					   		if(result == 'Slug exist')
+					   			Notification.error({message: 'Slug already taken, please choose another!', delay: 3000});
+					   		else{
+					   			Notification.success({message: 'Item updated successfully!', delay: 2000});
+				   				$uibModalInstance.close();
+				   			}
 					   })
 					   .catch(function(e){
 					   	    usSpinnerService.stop('spinner-1');
@@ -115,8 +120,13 @@ adminApp.controller('BlogModalInstanceCtrl', function ($scope, blog, $http, $uib
 				$scope.blog.image = uploadedImageName;			
 				return BlogSrvc.create($scope.blog)
 				   .then(function(result){
-				   		usSpinnerService.stop('spinner-1');
-				   		$uibModalInstance.close();	   
+				   	usSpinnerService.stop('spinner-1');
+				   		if(result == 'Slug exist')
+				   			Notification.error({message: 'Slug already taken, please choose another!', delay: 3000});
+				   		else{
+				   			Notification.success({message: 'Item created successfully!', delay: 2000});
+			   				$uibModalInstance.close();
+			   			}	   
 				   })
 				   .catch(function(e){
 					   	    usSpinnerService.stop('spinner-1');
@@ -132,14 +142,31 @@ adminApp.controller('BlogModalInstanceCtrl', function ($scope, blog, $http, $uib
     	$uibModalInstance.dismiss('cancel');
   	};
 
-  	BlogCategorySrvc.getBlogCategory()
-	  	.then(function(result){
-	  		$scope.blogCatsList  = result;
-	  			return TagSrvc.getTags();
+  	    CategorySrvc.getParentBlogCategory('blog')
+		  .then(function(result){
+		  	$scope.catsList = result;
+		  	return TagSrvc.getTags();
 		  })
 		  .then(function(tags){
-			  	$scope.tagList = tags;
-			  	return $scope.tagList;
+		  	$scope.tagList = tags;
+		  	return $scope.tagList;
 		  });
+
+		  $scope.$watch('blog.category', function(newValue, oldValue, scope) {
+              if(newValue != oldValue){
+              	CategorySrvc.getSubCategory($scope.blog.category)
+              	.then(function(result){
+              		  $scope.subCatList =  result;
+              	});
+              }
+        });
+
+		if($scope.blog){
+			CategorySrvc.getSubCategory($scope.blog.category)
+              	.then(function(result){
+              		  $scope.subCatList =  result;
+              	});
+		}
+
 
 });

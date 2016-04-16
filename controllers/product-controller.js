@@ -11,6 +11,7 @@ module.exports.list = function(req, res){
 	 });
 }
 
+
 module.exports.detail = function(req, res){
 
 	Services.ProductSrvc.detail(req.params.slug)
@@ -30,12 +31,25 @@ module.exports.listbycategory = function(req, res){
 
 module.exports.detailByCategorySlug = function(req, res){
 	
-	Services.ProductCategorySrvc.detail(req.params.slug)
+	Services.CategorySrvc.detail(req.params.slug)
 	.then(function(category){
-		Services.ProductSrvc.listByCategory(category._id)
-		.then(function(result){
-			res.json(result);
-		});
+		if(category.parentID == null){
+
+			Services.ProductSrvc.listByCategory(category._id)
+			.then(function(result){
+				res.json(result);
+			});
+
+		}
+		else{
+
+			Services.ProductSrvc.listBySubCategory(category._id)
+			.then(function(result){
+				res.json(result);
+			});
+
+		}
+
 
 	});
 }

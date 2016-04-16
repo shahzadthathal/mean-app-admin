@@ -3,6 +3,7 @@
 
   var Promise = require('promise');
   var Models = require('../models');
+  var Services = require('./common-service.js');
   
 function list() {
 	return Promise.denodeify(Models.ProductModel.find.bind(Models.ProductModel))()
@@ -24,6 +25,13 @@ function listByCategory(cateid){
       });
 }
 
+function listBySubCategory(cateid){
+   return Promise.denodeify(Models.ProductModel.find.bind(Models.ProductModel))({sub_category:cateid})
+      .then(function(results){
+          return results;
+      });
+}
+
 function listByTag(tag){
     return Promise.denodeify(Models.ProductModel.find.bind(Models.ProductModel))({ tags: tag })
       .then(function(results){
@@ -32,45 +40,65 @@ function listByTag(tag){
 }
 
 function create(data) {
-    var product = new Models.ProductModel({ 
-	    title: data.title,
-		  slug: data.slug,
-		  sale_price: data.sale_price,
-		  general_price: data.general_price,
-		  image: data.image,
-      caption:data.caption,
-      short_description:data.short_description,
-		  description: data.description,
-		  category: data.category,
-		  tags: data.tags
-    });
-    return Promise.denodeify(product.save.bind(product))()
-    .then(function (product) {
-		    return product;
-    });
+
+  return Services.getBySlug(data.slug)
+  .then(function(res){
+      if(res != null)
+        return "Slug exist";
+      else{
+          var product = new Models.ProductModel({ 
+              title: data.title,
+              slug: data.slug,
+              sale_price: data.sale_price,
+              general_price: data.general_price,
+              image: data.image,
+              caption:data.caption,
+              short_description:data.short_description,
+              description: data.description,
+              category: data.category,
+              sub_category: data.sub_category,
+              tags: data.tags
+            });
+            return Promise.denodeify(product.save.bind(product))()
+            .then(function (product) {
+                return product;
+          });
+      }
+  });
 }
+
 function update(id, data) {
-  return get(id)
-    .then(function (product) {
-        product.title = data.title,
-    	  product.slug  = data.slug,
-    	  product.sale_price = data.sale_price,
-    	  product.general_price = data.general_price,
-    	  product.image = data.image,
-        product.caption = data.caption,
-        product.short_description = data.short_description,
-    	  product.description = data.description,
-    	  product.category = data.category,
-    	  product.tags = data.tags,
-    	  product.date_created = data.date_created,
-    	  product.status = data.status
-        
-        return Promise.denodeify(product.save.bind(product))()
-    })
-    .then(function (product) {
-      return product;
-    });
+  return Services.verifyBySlug(data.slug,id)
+  .then(function(res){
+      if(res != null)
+        return "Slug exist";
+      else{
+        return get(id)
+          .then(function (product) {
+            
+              product.title = data.title,
+          	  product.slug  = data.slug,
+          	  product.sale_price = data.sale_price,
+          	  product.general_price = data.general_price,
+          	  product.image = data.image,
+              product.caption = data.caption,
+              product.short_description = data.short_description,
+          	  product.description = data.description,
+          	  product.category = data.category,
+              product.sub_category= data.sub_category,
+          	  product.tags = data.tags,
+          	  product.date_created = data.date_created,
+          	  product.status = data.status
+              
+              return Promise.denodeify(product.save.bind(product))()
+          })
+          .then(function (product) {
+            return product;
+          });
+    }
+  });
 }
+
   
 function remove(id) {
     return Promise.denodeify(Models.ProductModel.remove.bind(Models.ProductModel))({ _id: id })
@@ -98,6 +126,7 @@ module.exports = {
 	list:list,
   detail:detail,
   listByCategory:listByCategory,
+  listBySubCategory:listBySubCategory,
 	create:create,
 	update:update,
 	remove:remove,

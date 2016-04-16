@@ -1,0 +1,255 @@
+
+<div id="main">
+<div id="content">
+        <div id="breadcrumbs">
+          <ol>
+            <li> <a href="index.html"> <span itemprop="name">Home</span></a> </li>
+            <li>{{breadcrumbs}}</li>
+          </ol>
+        </div>
+
+<div id="sidebar">
+
+
+<div ng-show="showProductCategory" product-category-directive></div>
+
+
+<div ng-show="showBlogCategory" blog-category-directive></div>
+
+
+<div social-media-directie></div>
+
+</div>
+
+
+
+<div ng-show="showProductDetailArea" class="product-detail-page">
+
+  <div class="shop-detail-intro clearfix">
+    <div class="shop-detail-info"> 
+     <img src="{{imageUrl}}{{productDetail.image}}" alt="{{productDetail.title}}" width="277"> 
+    </div>
+    <div class="shop-text clearfix">
+      <div class="shop-text-header clearfix">
+        <h1>{{productDetail.title}}</h1>
+        <span class="shop_detail_fav"> 
+        <a href="{{productDetail.slug}}"> 
+        <img src="assets/theme/image/fav-empty.png" alt="favorite product"> 
+        </a> 
+        </span> 
+      </div>
+      <div class="shop-text-body">
+        <span class="shop-price current_price">{{productDetail.sale_price | currency}} </span> 
+        <span class="shop-price" style="text-decoration: line-through;">{{productDetail.general_price | currency}}</span>
+        <br>
+    <p ng-bind-html="productDetail.description | cleanHTML"></p>
+        
+    <div ng-repeat="tag in productDetail.tags">
+    <span class="label label-success"><a href="/{{tag}}">{{tag}}</a></span>
+    </div>
+            
+   </div>
+    </div>
+    <!-- end shoptext -->
+  </div>
+
+  <div class="webshop-products clearfix">
+    <h2>Mix &amp; match tips:</h2>
+   
+   
+   <div class="product" ng-repeat='product in products'>
+     <div class="product-img">
+   <a href="{{product.slug}}" title="{{product.title}}">
+          <img src="{{imageUrl}}{{product.image}}" width="267" height="400" alt="{{product.title}}">
+     </a>
+   </div>
+      <div class="product-text">
+    <a href="{{product.slug}}" title="{{product.title}}">{{product.title}}</a>
+    </div>
+    <div class="product-specs clearfix">
+      <span class="product-price current_price">{{product.sale_price | currency}}</span>
+      <span ng-if="product.general_price" class="oldprice">{{product.general_price | currency}}</span>
+    </div>
+     </div>
+  </div>
+
+</div>
+
+
+<div ng-show="showProductCategoryDetailArea" class="product-detail-page">
+
+  
+ <div class="shop-detail-intro clearfix">
+    
+    <div class="shop-text clearfix">
+      <div class="shop-text-header clearfix">
+        <h1>{{productCategoryDetail.title}}</h1>
+      </div>
+      <div class="shop-text-body">
+      {{productCategoryDetail.description}}      
+   </div>
+    </div>
+    <!-- end shoptext -->
+  </div>
+    
+
+  <div class="webshop-products clearfix">
+    <h2>Mix &amp; match tips:</h2>
+   
+   
+   <div class="product" ng-repeat='product in products'>
+     <div class="product-img">
+   <a href="{{product.slug}}" title="{{product.title}}">
+          <img src="{{imageUrl}}{{product.image}}" width="267" height="400" alt="{{product.title}}">
+     </a>
+   </div>
+      <div class="product-text">
+    <a href="{{product.slug}}" title="{{product.title}}">{{product.title}}</a>
+    </div>
+    <div class="product-specs clearfix">
+      <span class="product-price current_price">{{product.sale_price | currency}}</span>
+      <span ng-if="product.general_price" class="oldprice">{{product.general_price | currency}}</span>
+    </div>
+     </div>
+  </div>
+
+</div>
+
+
+
+<div ng-show="showTagDetailArea" class="product-detail-page">
+
+  
+ <div class="shop-detail-intro clearfix">
+    
+    <div class="shop-text clearfix">
+      <div class="shop-text-header clearfix">
+        <h1>{{tagDetail.title}}</h1>
+      </div>
+      <div class="shop-text-body">
+      {{tagDetail.description}}      
+   </div>
+    </div>
+    <!-- end shoptext -->
+  </div>
+    
+
+  <div class="webshop-products clearfix">
+    <h2>Mix &amp; match products:</h2>
+   
+   
+   <div class="product" ng-repeat='product in products'>
+     <div class="product-img">
+   <a href="{{product.slug}}" title="{{product.title}}">
+          <img src="{{imageUrl}}{{product.image}}" width="267" height="400" alt="{{product.title}}">
+     </a>
+   </div>
+      <div class="product-text">
+    <a href="{{product.slug}}" title="{{product.title}}">{{product.title}}</a>
+    </div>
+    <div class="product-specs clearfix">
+      <span class="product-price current_price">{{product.sale_price | currency}}</span>
+      <span ng-if="product.general_price" class="oldprice">{{product.general_price | currency}}</span>
+    </div>
+     </div>
+  </div>
+
+<div class="seprator"></div>
+
+  <div class="webshop-products clearfix">
+    <h2>Mix &amp; match blogs:</h2>
+   <div class="product" ng-repeat='blog in blogs'>
+     <div class="product-img">
+   <a href="{{blog.slug}}" title="{{blog.title}}">
+          <img src="{{imageUrl}}{{blog.image}}" width="267" height="400" alt="{{blog.title}}">
+     </a>
+   </div>
+      <div class="product-text">
+    <a href="{{blog.slug}}" title="{{blog.title}}">{{blog.title}}</a>
+    </div>
+    
+     </div>
+  </div>
+
+</div>
+
+
+<div ng-show="showBlogCategoryDetailArea" class="product-detail-page">
+
+  
+ <div class="shop-detail-intro clearfix">
+    
+    <div class="shop-text clearfix">
+      <div class="shop-text-header clearfix">
+        <h1>{{blogCategoryDetail.title}}</h1>
+      </div>
+      <div class="shop-text-body">
+      {{blogCategoryDetail.description}}      
+   </div>
+    </div>
+    <!-- end shoptext -->
+  </div>
+    
+
+  <div class="webshop-products clearfix">
+    <h2>Related blogs:</h2>
+   
+   
+<div id="post-discover" class="clearfix">
+
+      <div class="post clearfix" ng-repeat="blog in blogs">
+          <div class="post-img"><a href="{{blog.slug}}">
+                  <img src="{{imageUrl}}{{blog.image}}" alt="{{blog.title}}" width="200" height="200" /></a></div>
+          <div class="post-text">
+              <h3><a href="{{blog.slug}}">{{blog.title}}</a></h3>
+          </div>
+      </div>
+
+ </div>
+
+  </div>
+
+</div>
+
+
+
+<div ng-show="showBlogDetailArea" class="blog-container">
+
+<h1>{{blogDetail.title}}</h1>
+
+<div id="blog-detail" class="clearfix">
+  
+    <div class="blog-info">
+      <span class="info-date"> {{blogDetail.date_created | date : format:'MMM d,y'}}</span> 
+      <span><a href="">blogDetail.author</a></span>
+     </div>
+    <div class="blog-content">
+    <img src="{{imageUrl}}{{blogDetail.image}}" alt="{{blogDetail.title}}" width="200" height="200" />
+          <p ng-bind-html="blogDetail.description | cleanHTML"></p>
+    </div>
+</div>
+
+
+<h2>Related Blogs:</h2>
+
+<div id="post-discover" class="clearfix">
+
+      <div class="post clearfix" ng-repeat="blog in blogs">
+          <div class="post-img"><a href="{{blog.slug}}">
+                  <img src="{{imageUrl}}{{blog.image}}" alt="{{blog.title}}" width="200" height="200" /></a></div>
+          <div class="post-text">
+              <h3>{{blog.title}}</h3>
+          </div>
+      </div>
+
+ </div>
+
+</div>
+
+
+
+
+
+</div> <!-- end content -->
+</div> <!-- end main -->
+
