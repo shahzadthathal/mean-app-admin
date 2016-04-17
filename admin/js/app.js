@@ -10,8 +10,8 @@ var adminApp = angular.module('adminApp', [
 	'ui-notification'
 	]);
 
-//adminApp.constant('SERVERURL', 'http://localhost:3003');
-adminApp.constant('SERVERURL', 'https://mean-app-admin.herokuapp.com');
+adminApp.constant('SERVERURL', 'http://localhost:3003');
+//adminApp.constant('SERVERURL', 'https://mean-app-admin.herokuapp.com');
 
 adminApp.config(['$routeProvider', function($routeProvider){
 		$routeProvider

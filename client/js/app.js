@@ -21,8 +21,8 @@ var clientApp = angular.module('clientApp', [
   clientApp.constant('AppConfig', {
     'APP_NAME' : 'Web Shop',
     'APP_VERSION' : '1.0.0',
-    //'SERVERURL': 'http://localhost:3003',
-    'SERVERURL': 'https://mean-app-admin.herokuapp.com',
+    'SERVERURL': 'http://localhost:3003',
+    //'SERVERURL': 'https://mean-app-admin.herokuapp.com',
     'GOOGLE_ANALYTICS_ID' : '',
     'BASE_URL' : '',
     'META_TITLE': 'Web Shop'
