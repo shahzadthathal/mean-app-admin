@@ -2,7 +2,6 @@ adminApp.controller('CategoryCtrl', ['$scope', 'UserSrvc', 'CategorySrvc', '$loc
 
 	$scope.imageUrl = SERVERURL+'/images/';
 	$scope.cats = [];
-	//$scope.product  = {};
 	
 	if (!$window.sessionStorage.token || $window.sessionStorage.token == 'null') { 
 			$location.url('/admin/login')
@@ -23,7 +22,13 @@ adminApp.controller('CategoryCtrl', ['$scope', 'UserSrvc', 'CategorySrvc', '$loc
                     return category;
                 }
             }
+	    });
 
+	    modalInstance.result.then(function () {
+      		CategorySrvc.getCategory()
+			.then(function (cats) {
+			    $scope.cats = cats;
+			});
 	    });
 
 	};

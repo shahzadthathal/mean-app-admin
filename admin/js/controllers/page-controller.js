@@ -17,7 +17,13 @@ adminApp.controller('PageCtrl', ['$scope', 'UserSrvc', 'PageSrvc', '$location', 
                     return page;
                 }
             }
+	    });
 
+	    modalInstance.result.then(function () {
+      		PageSrvc.getPages()
+			.then(function (pages) {
+			    $scope.pages = pages;
+			});
 	    });
 	};
 

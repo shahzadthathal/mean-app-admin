@@ -22,6 +22,15 @@ adminApp.controller('ProductCtrl', ['$scope', 'UserSrvc', 'ProductSrvc', '$locat
             }
 
 	    });
+
+	    modalInstance.result.then(function () {
+      		ProductSrvc.getProducts()
+			.then(function (products) {
+			    $scope.products = products;
+			});
+	    });
+
+
 	};
 
 	$scope.deleteItem = function(model){

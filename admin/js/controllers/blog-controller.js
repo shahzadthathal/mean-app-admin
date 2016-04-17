@@ -23,6 +23,13 @@ adminApp.controller('BlogCtrl', ['$scope', 'UserSrvc', 'BlogSrvc', '$location', 
                 }
             }
 	    });
+
+	    modalInstance.result.then(function () {
+      		BlogSrvc.getBlogs()
+			.then(function (blogs) {
+			    $scope.blogs = blogs;
+			});
+	    });
 	};
 
 	$scope.deleteItem = function(model){

@@ -17,7 +17,13 @@ adminApp.controller('TagCtrl', ['$scope', 'UserSrvc', 'TagSrvc', '$location', '$
                     return tag;
                 }
             }
+	    });
 
+	    modalInstance.result.then(function () {
+      		TagSrvc.getTags()
+			.then(function (tags) {
+			    $scope.tags = tags;
+			});
 	    });
 	};
 
