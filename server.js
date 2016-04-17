@@ -35,8 +35,8 @@ app.use(function(req, res, next) {
 });
 
 
-var dbUrl = process.env.MONGOLAB_URI || "mongodb://127.0.0.1:27017/ecommerce-app-db";
-//var dbUrl = 'mongodb://ecommerce-app:123456@ds015849.mlab.com:15849/ecommerce-app-db';
+//var dbUrl = process.env.MONGOLAB_URI || "mongodb://127.0.0.1:27017/ecommerce-app-db";
+var dbUrl = 'mongodb://ecommerce-app:123456@ds015849.mlab.com:15849/ecommerce-app-db';
 
 var port = process.env.PORT || 3003;//replace with = 80; when you want to hide port number
 
