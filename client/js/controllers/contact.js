@@ -14,6 +14,17 @@
     $rootScope.metaservice = MetaService;
     $rootScope.metaservice.set($scope.shopName+"| Contact","desc 123","blah blah");
 
+    $http.get(AppConfig.SERVERURL + '/api/page/detail/contact')
+      .then(function (result) {
+        $scope.pageData =  result.data;
+        //return $scope.pageData;
+    });
+
+    $scope.renderHtml = function(html_code)
+    {
+        return $sce.trustAsHtml(html_code);
+    };
+
     $scope.result = 'hidden'
     $scope.resultMessage;
     $scope.formData; //formData is an object holding the name, email, subject, and message
