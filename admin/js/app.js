@@ -13,6 +13,7 @@ var adminApp = angular.module('adminApp', [
 //adminApp.constant('SERVERURL', 'http://localhost:3003');
 adminApp.constant('SERVERURL', 'https://mean-app-admin.herokuapp.com');
 
+
 adminApp.config(['$routeProvider', function($routeProvider){
 		$routeProvider
 		   .when('/',{
@@ -57,7 +58,12 @@ adminApp.config(['$routeProvider', function($routeProvider){
 			.when('/admin/page-manager', {
 				templateUrl: 'partials/pages.html',
 				controller: 'PageCtrl'	
+			})			
+			.when('/admin/setting-manager',{
+				templateUrl: 'partials/setting.html',
+				controller: 'SettingCtrl'
 			})
+						
 			.when('/admin/profile',{
 				templateUrl: 'partials/profile.html',
 				controller: 'ProfileCtrl'

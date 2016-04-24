@@ -51,6 +51,30 @@ var MainCtrl =   clientApp.controller('MainCtrl', ['$scope', '$http', 'AppConfig
         });
         
     }
+
+    if($localStorage.socialMedia){
+        $scope.socialMedia = $localStorage.socialMedia;
+    }
+    else{
+        
+
+        $http.get(AppConfig.SERVERURL + '/api/setting/list')
+        .then(function(result){
+             
+             $scope.socialMedia = {
+                    facebook_appid:result.data[0].facebook_appid,
+                    facebook_url:result.data[0].facebook_url,
+                    google_url:result.data[0].google_url,
+                    linkedin_id:result.data[0].linkedin_id,
+                    twitter_url:result.data[0].twitter_url,
+                    pinit_url:result.data[0].pinit_url
+                };
+                $localStorage.socialMedia = $scope.socialMedia;
+        });
+
+    }
+
+
       
     if($localStorage.productParentCats){
 

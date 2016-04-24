@@ -4733,7 +4733,7 @@ ul.productslider0 li ,ul.productslider1 li  {
 
 .banner-wrap{
     width:1270px;
-    margin:auto;
+    margin:auto 10px;
 }								
 .leftBanner {
     float: left;
@@ -4745,7 +4745,7 @@ ul.productslider0 li ,ul.productslider1 li  {
 }
 .leftBanner, .rightBanner {
     height: 400px;
-    margin-top: 250px;
+    margin-top: 174px;
     position: fixed;
     width: 120px;
     z-index:999;

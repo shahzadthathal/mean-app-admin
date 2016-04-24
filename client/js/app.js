@@ -63,7 +63,7 @@ var clientApp = angular.module('clientApp', [
       });
 
     // use the HTML5 History API
-      $locationProvider.html5Mode(true);
+      $locationProvider.html5Mode(true).hashPrefix('!');
      
      // prevent preflight request for cross-domain Ajax calls
     $httpProvider.defaults.useXDomain = true;
@@ -73,4 +73,6 @@ var clientApp = angular.module('clientApp', [
 
   clientApp.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
-  }])
+  }]);
+
+

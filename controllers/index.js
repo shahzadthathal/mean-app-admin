@@ -5,8 +5,8 @@ module.exports = {
 	TagCtrl				: require('./tag-controller'),
 	UserCtrl			: require('./user-controller'),
 	BlogCtrl			: require('./blog-controller'),
-	BlogCategoryCtrl	: require('./blog-category-controller'),
 	PageCtrl			: require('./page-controller'),
 	EmailCtrl			: require('./email-controller'),
-	CommonCtrl			: require('./common-controller')
+	CommonCtrl			: require('./common-controller'),
+	SettingCtrl			: require('./setting-controller')
   }

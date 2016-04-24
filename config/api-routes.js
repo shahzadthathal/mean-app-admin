@@ -11,8 +11,9 @@
 
   	app.post('/api/contact/sendemail', Controllers.EmailCtrl.send);
 
+
 	// User Routes  
-	app.post('/api/users/create', Controllers.UserCtrl.create);
+	//app.post('/api/users/create', Controllers.UserCtrl.create);
     app.post('/api/users/login', Controllers.UserCtrl.login); 
     app.get('/api/users/me', auth.requiresLogin, Controllers.UserCtrl.me);
 	app.put('/api/users/update/:id', auth.requiresLogin, Controllers.UserCtrl.update);
@@ -54,17 +55,7 @@
     app.delete('/api/tag/delete/:id', auth.requiresLogin, Controllers.TagCtrl.delete);
 	
 
-
-
-	//Blog Category Routes
-	app.get('/api/blog-category/list', Controllers.BlogCategoryCtrl.list);
-	app.get('/api/blog-category/detail/:slug', Controllers.BlogCategoryCtrl.detail);
-	app.post('/api/blog-category/create', auth.requiresLogin,  Controllers.BlogCategoryCtrl.create);
-	app.put('/api/blog-category/update/:id', auth.requiresLogin,  Controllers.BlogCategoryCtrl.update);
-    app.delete('/api/blog-category/delete/:id', auth.requiresLogin, auth.requiresLogin, Controllers.BlogCategoryCtrl.delete);
-	
-	
-	// Product Routes
+    // Product Routes
 	app.get('/api/blog/list', Controllers.BlogCtrl.list);
 	app.get('/api/blog/detail/:slug', Controllers.BlogCtrl.detail);
 	app.get('/api/blog/listbycatslug/:slug', Controllers.BlogCtrl.detailByCategorySlug);
@@ -83,4 +74,13 @@
 	app.put('/api/page/update/:id', auth.requiresLogin, Controllers.PageCtrl.update);
     app.delete('/api/page/delete/:id', auth.requiresLogin, Controllers.PageCtrl.delete);
 	
+    // Tag Routes
+	app.get('/api/setting/list', Controllers.SettingCtrl.list);
+	app.get('/api/setting/detail/:id', Controllers.SettingCtrl.detail);
+	app.post('/api/setting/create', auth.requiresLogin, Controllers.SettingCtrl.create);
+	app.put('/api/setting/update/:id', auth.requiresLogin, Controllers.SettingCtrl.update);
+    app.delete('/api/setting/delete/:id', auth.requiresLogin, Controllers.SettingCtrl.delete);
+	
+
+
   }

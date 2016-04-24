@@ -30,6 +30,7 @@
     "textAngular": "^1.5.0",
     "angular-loading-bar": "^0.9.0",
     "angular-ui-notification": "^0.1.0",
-    "ngstorage": "^0.3.10"
+    "ngstorage": "^0.3.10",
+    "angular-socialshare": "^1.4.5"
   }
 }

@@ -1,0 +1,70 @@
+
+
+<div class="modal-header alert-info">
+<h4 class="modal-title">Settings...</h4>
+</div>
+<div class="modal-body">
+
+
+<form name="$parent.settingForm" novalidate>
+
+
+<div class="form-group" ng-class="{ 'has-error' : settingForm.facebook_appid.$invalid && !settingForm.facebook_appid.$pristine }">
+    <label>Facebook App Id</label>
+    <input type="text" name="facebook_appid" class="form-control" ng-model="setting.facebook_appid" ng-minlength="3" ng-maxlength="150" required>
+    <p ng-show="settingForm.facebook_appid.$invalid && !settingForm.facebook_appid.$pristine" class="help-block">Facebook app id is required.</p>
+</div>
+
+
+
+
+<div class="form-group" ng-class="{ 'has-error' : settingForm.facebook_url.$invalid && !settingForm.facebook_url.$pristine }">
+    <label>Facebook URL</label>
+    <input type="text" name="facebook_url" class="form-control" ng-model="setting.facebook_url" ng-minlength="3" ng-maxlength="150" required>
+    <p ng-show="settingForm.facebook_url.$invalid && !settingForm.facebook_url.$pristine" class="help-block">Facebook url is required.</p>
+</div>
+
+
+
+<div class="form-group" ng-class="{ 'has-error' : settingForm.google_url.$invalid && !settingForm.google_url.$pristine }">
+    <label>Google URL</label>
+    <input type="text" name="google_url" class="form-control" ng-model="setting.google_url" ng-minlength="3" ng-maxlength="150" required>
+    <p ng-show="settingForm.google_url.$invalid && !settingForm.google_url.$pristine" class="help-block">Google url is required.</p>
+</div>
+
+
+<div class="form-group" ng-class="{ 'has-error' : settingForm.linkedin_id.$invalid && !settingForm.linkedin_id.$pristine }">
+    <label>Linkedin Id</label>
+    <input type="text" name="linkedin_id" class="form-control" ng-model="setting.linkedin_id" ng-minlength="3" ng-maxlength="150" required>
+    <p ng-show="settingForm.linkedin_id.$invalid && !settingForm.linkedin_id.$pristine" class="help-block">Linkedin id is required.</p>
+</div>
+
+
+<div class="form-group" ng-class="{ 'has-error' : settingForm.twitter_url.$invalid && !settingForm.twitter_url.$pristine }">
+    <label>Twitter url</label>
+    <input type="text" name="twitter_url" class="form-control" ng-model="setting.twitter_url" ng-minlength="3" ng-maxlength="150" required>
+    <p ng-show="settingForm.twitter_url.$invalid && !settingForm.twitter_url.$pristine" class="help-block">Twitter url is required.</p>
+</div>
+
+<div class="form-group" ng-class="{ 'has-error' : settingForm.pinit_url.$invalid && !settingForm.pinit_url.$pristine }">
+    <label>Pinit url</label>
+    <input type="text" name="pinit_url" class="form-control" ng-model="setting.pinit_url" ng-minlength="3" ng-maxlength="150" required>
+    <p ng-show="settingForm.pinit_url.$invalid && !settingForm.pinit_url.$pristine" class="help-block">Pinit url is required.</p>
+</div>
+
+
+
+</form>
+
+</div>
+
+
+
+<div class="modal-footer">
+
+<button type="submit" class="btn btn-primary" ng-disabled="settingForm.$invalid" 
+ng-click="submitForm(settingForm)">Submit</button>
+<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+
+</div>
+
