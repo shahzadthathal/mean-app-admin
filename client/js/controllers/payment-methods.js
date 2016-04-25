@@ -30,12 +30,15 @@ var PaymentMethodCtrl =   clientApp.controller('PaymentMethodCtrl', ['$scope', '
 	});
 
 
-	if($localStorage.productParentCats){
+	 /*
+   if($localStorage.productParentCats){
 
         $scope.productParentCats = $localStorage.productParentCats;
         $scope.productSubCats =  $localStorage.productSubCats;
     }
     else{
+
+     */ 
         
             $http.get(AppConfig.SERVERURL + '/api/category/cat-list-by-type/product')
                       .then(function(result){
@@ -55,7 +58,7 @@ var PaymentMethodCtrl =   clientApp.controller('PaymentMethodCtrl', ['$scope', '
                 $localStorage.productParentCats = $scope.productParentCats;
                 $localStorage.productSubCats = $scope.productSubCats;
             });
-    }
+   // }
 
 		$scope.renderHtml = function(html_code)
 		{

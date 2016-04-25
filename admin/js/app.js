@@ -58,7 +58,11 @@ adminApp.config(['$routeProvider', function($routeProvider){
 			.when('/admin/page-manager', {
 				templateUrl: 'partials/pages.html',
 				controller: 'PageCtrl'	
-			})			
+			})
+			.when('/admin/contact-manager', {
+				templateUrl: 'partials/contact.html',
+				controller: 'ContactCtrl'	
+			})
 			.when('/admin/setting-manager',{
 				templateUrl: 'partials/setting.html',
 				controller: 'SettingCtrl'

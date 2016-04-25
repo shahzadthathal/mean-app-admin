@@ -82,5 +82,12 @@
     app.delete('/api/setting/delete/:id', auth.requiresLogin, Controllers.SettingCtrl.delete);
 	
 
+    // Contact us Routes
+	app.get('/api/contact/list', Controllers.ContactCtrl.list);
+	app.get('/api/contact/detail/:id', auth.requiresLogin, Controllers.ContactCtrl.detail);
+	app.post('/api/contact/create', Controllers.ContactCtrl.create);
+	app.put('/api/contact/update/:id', auth.requiresLogin, Controllers.ContactCtrl.update);
+    app.delete('/api/contact/delete/:id', auth.requiresLogin, Controllers.ContactCtrl.delete);
+	
 
   }

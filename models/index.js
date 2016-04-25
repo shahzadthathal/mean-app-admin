@@ -6,5 +6,6 @@ module.exports = {
 	UserModel			 :	require('./user'),
 	BlogModel			 :	require('./blog'),
 	PageModel			 :	require('./page'),
-	SettingModel		 :	require('./setting')
+	SettingModel		 :	require('./setting'),
+	ContactModel		 :	require('./contact'),
 }

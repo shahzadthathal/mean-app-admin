@@ -37,16 +37,18 @@
         	usSpinnerService.spin('spinner-1');
         	$scope.result='bg-success';
 
-            $http.post(AppConfig.SERVERURL + '/api/contact/sendemail')
+
+            $http.post(AppConfig.SERVERURL + '/api/contact/create', $scope.formData) ///api/contact/sendemail
                 .then(function(result){
-                    if(result.success){
+                    if(result){
                         $scope.submitButtonDisabled = true;
-                        $scope.resultMessage = data.message;
+                        $scope.resultMessage = 'Contact request submitted successfully, we will contact you asap!';
                         $scope.result='bg-success';
+                        $scope.formData = null;
                     }
                     else {
                         $scope.submitButtonDisabled = false;
-                        $scope.resultMessage = data.message;
+                        $scope.resultMessage = result.message;
                         $scope.result='bg-danger';
                     }
                     usSpinnerService.stop('spinner-1');

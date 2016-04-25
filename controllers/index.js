@@ -1,6 +1,6 @@
 //controllers
 module.exports = {
-    CategoryCtrl	: require('./category-controller'),
+    CategoryCtrl		: require('./category-controller'),
     ProductCtrl			: require('./product-controller'),
 	TagCtrl				: require('./tag-controller'),
 	UserCtrl			: require('./user-controller'),
@@ -8,5 +8,6 @@ module.exports = {
 	PageCtrl			: require('./page-controller'),
 	EmailCtrl			: require('./email-controller'),
 	CommonCtrl			: require('./common-controller'),
-	SettingCtrl			: require('./setting-controller')
+	SettingCtrl			: require('./setting-controller'),
+	ContactCtrl			: require('./contact-controller')
   }

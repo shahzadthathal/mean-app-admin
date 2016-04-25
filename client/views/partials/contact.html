@@ -13,13 +13,18 @@
 
  <div class="contect_form">
 
+
+
  <form name="contactform" class="form-horizontal" role="form" novalidate>
+
+
+    <p ng-class="result" style="padding: 15px; margin: 0;">{{ resultMessage }}</p>
 
      <div class="contect_details">
         <span class="contect_label">
             <label for="first_name">Name *</label></span>
         <span class="contect_input"><span id="name_v_contact_contact">
-<input ng-model="formData.inputName" type="text" class="input_login text-input" id="inputName" name="inputName" placeholder="Your Name" required>
+<input ng-model="formData.name" type="text" class="input_login text-input" id="name" name="name" placeholder="Your Name" required>
         </span>
         </span>
     </div>
@@ -29,7 +34,7 @@
         <span class="contect_label">
             <label for="first_name">Email *</label></span>
         <span class="contect_input"><span id="name_v_contact_contact">
-<input ng-model="formData.inputEmail" type="text" class="input_login text-input" id="inputEmail" name="inputEmail" placeholder="Your Email" required>
+<input ng-model="formData.email" type="email" class="input_login text-input" id="email" name="email" placeholder="Your Email" required>
         </span>
         </span>
     </div>
@@ -40,7 +45,7 @@
         <span class="contect_label">
             <label for="first_name">Subject *</label></span>
         <span class="contect_input"><span id="name_v_contact_contact">
-<input ng-model="formData.inputSubject" type="text" class="input_login text-input" id="inputSubject" name="inputSubject" placeholder="Your Name" required>
+<input ng-model="formData.subject" type="text" class="input_login text-input" id="subject" name="subject" placeholder="Your Subject" required>
         </span>
         </span>
     </div>
@@ -51,7 +56,7 @@
                         <label for="day">Detail *</label></span>
                     <span class="contect_input">
                         <span id="comments_v_contact_contact">
-<textarea class="input_login " cols="50" id="inputMessage" name="inputMessage" rows="5"></textarea>
+<textarea class="input_login " cols="50" id="message" ng-model="formData.message" name="message" rows="5"></textarea>
 </span></span>
   </div>
 

@@ -7,5 +7,6 @@ module.exports = {
 	BlogSrvc		: require('./blog-service'),
 	PageSrvc 		: require('./page-service'),
 	CommonSrvc 		: require('./common-service'),
-	SettingSrvc 	: require('./setting-service')
+	SettingSrvc 	: require('./setting-service'),
+	ContactSrvc 	: require('./contact-service')
 }

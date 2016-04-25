@@ -27,10 +27,11 @@ var MainCtrl =   clientApp.controller('MainCtrl', ['$scope', '$http', 'AppConfig
 
     $scope.imageUrl = AppConfig.SERVERURL+'/images/';
 
-    if($localStorage.homePagePosts){
+   /* if($localStorage.homePagePosts){
         $scope.homePagePosts = $localStorage.homePagePosts;
     }
     else{
+    */    
 
          $http.get(AppConfig.SERVERURL + '/api/blog/list')
           .then(function (result) {
@@ -38,25 +39,27 @@ var MainCtrl =   clientApp.controller('MainCtrl', ['$scope', '$http', 'AppConfig
             $localStorage.homePagePosts = result.data;
         });
         
-    }
+    //}
 
-    if($localStorage.products){
+    /*if($localStorage.products){
        $scope.products = $localStorage.products;
     }
-    else{ 
+    else{
+    */ 
          $http.get(AppConfig.SERVERURL + '/api/product/list')
           .then(function (result) {
             $scope.products =  result.data;
             $localStorage.products = result.data;
         });
         
-    }
+    //}
 
+    /*
     if($localStorage.socialMedia){
         $scope.socialMedia = $localStorage.socialMedia;
     }
     else{
-        
+    */    
 
         $http.get(AppConfig.SERVERURL + '/api/setting/list')
         .then(function(result){
@@ -72,16 +75,16 @@ var MainCtrl =   clientApp.controller('MainCtrl', ['$scope', '$http', 'AppConfig
                 $localStorage.socialMedia = $scope.socialMedia;
         });
 
-    }
+    //}
 
 
       
-    if($localStorage.productParentCats){
+    /*if($localStorage.productParentCats){
 
         $scope.productParentCats = $localStorage.productParentCats;
         $scope.productSubCats =  $localStorage.productSubCats;
     }
-    else{
+    else{*/
         
             $http.get(AppConfig.SERVERURL + '/api/category/cat-list-by-type/product')
                       .then(function(result){
@@ -101,16 +104,17 @@ var MainCtrl =   clientApp.controller('MainCtrl', ['$scope', '$http', 'AppConfig
                 $localStorage.productParentCats = $scope.productParentCats;
                 $localStorage.productSubCats = $scope.productSubCats;
             });
-    }
+    //}
 
 
+    /*
     if($localStorage.blogParentCats){
 
         $scope.blogParentCats = $localStorage.blogParentCats;
         $scope.blogSubCats =  $localStorage.blogSubCats;
     }
     else{
-        
+     */   
             $http.get(AppConfig.SERVERURL + '/api/category/cat-list-by-type/blog')
                       .then(function(result){
                         var j = 0; var k = 0;
@@ -129,7 +133,7 @@ var MainCtrl =   clientApp.controller('MainCtrl', ['$scope', '$http', 'AppConfig
                 $localStorage.blogParentCats = $scope.blogParentCats;
                 $localStorage.blogSubCats = $scope.blogSubCats;
             });
-    }
+    //}
 
 
 

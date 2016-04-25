@@ -1,0 +1,54 @@
+
+
+<div class="modal-header alert-info">
+<h4 class="modal-title">Tags...</h4>
+</div>
+<div class="modal-body">
+
+
+<form name="$parent.contactForm" novalidate>
+
+
+<div class="form-group" ng-class="{ 'has-error' : contactForm.name.$invalid && !contactForm.name.$pristine }">
+    <label>Name</label>
+    <input type="text" name="name" class="form-control" ng-model="contact.name" ng-minlength="3" ng-maxlength="50" required>
+    <p ng-show="contactForm.name.$invalid && !contactForm.name.$pristine" class="help-block">Name is required.</p>
+</div>
+
+<div class="form-group" ng-class="{ 'has-error' : contactForm.email.$invalid && !contactForm.name.$pristine }">
+    <label>Email</label>
+    <input type="text" name="email" class="form-control" ng-model="contact.email" ng-minlength="3" ng-maxlength="50" required>
+    <p ng-show="contactForm.email.$invalid && !contactForm.email.$pristine" class="help-block">Email is required.</p>
+</div>
+
+
+<div class="form-group" ng-class="{ 'has-error' : contactForm.subject.$invalid && !contactForm.subject.$pristine }">
+    <label>Subject</label>
+    <input type="text" name="subject" class="form-control" ng-model="contact.subject" ng-minlength="3" ng-maxlength="50" required>
+    <p ng-show="contactForm.subject.$invalid && !contactForm.subject.$pristine" class="help-block">Subject is required.</p>
+</div>
+
+
+
+
+<div class="form-group" ng-class="{ 'has-error' : contactForm.message.$invalid && !contactForm.message.$pristine }">
+    <label>Message</label>
+    <textarea name="message" class="form-control" ng-model="contact.message" id="message" cols="50" rows="5" required></textarea>
+    <p ng-show="contactForm.message.$invalid && !contactForm.message.$pristine" class="help-block"> Message is required.</p>
+</div>
+
+
+</form>
+
+</div>
+
+
+
+<div class="modal-footer">
+
+<button type="submit" class="btn btn-primary" ng-disabled="contactForm.$invalid" 
+ng-click="submitForm(contactForm)">Submit</button>
+<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+
+</div>
+

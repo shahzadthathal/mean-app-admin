@@ -23,26 +23,29 @@ var BlogCtrl =   clientApp.controller('BlogCtrl', ['$scope', '$route', '$http', 
 	$scope.products = [];
     $scope.imageUrl = AppConfig.SERVERURL+'/images/';
     
+    /*
     if($localStorage.blogs){
         $scope.blogs = $localStorage.blogs;
     }
     else{
 
+      */
          $http.get(AppConfig.SERVERURL + '/api/blog/list')
           .then(function (result) {
             $scope.blogs =  result.data;
             $localStorage.blogs = result.data;
         });
         
-    }
+    //}
 
+    /*
      if($localStorage.blogParentCats){
 
         $scope.blogParentCats = $localStorage.blogParentCats;
         $scope.blogSubCats =  $localStorage.blogSubCats;
     }
     else{
-        
+    */    
             $http.get(AppConfig.SERVERURL + '/api/category/cat-list-by-type/blog')
                       .then(function(result){
                         var j = 0; var k = 0;
@@ -61,19 +64,22 @@ var BlogCtrl =   clientApp.controller('BlogCtrl', ['$scope', '$route', '$http', 
                 $localStorage.blogParentCats = $scope.blogParentCats;
                 $localStorage.blogSubCats = $scope.blogSubCats;
             });
-    }
+    //}
 
+    /*
     if($localStorage.products){
        $scope.products = $localStorage.products;
     }
-    else{ 
+    else{
+    */
+
          $http.get(AppConfig.SERVERURL + '/api/product/list')
           .then(function (result) {
             $scope.products =  result.data;
             $localStorage.products = result.data;
         });
         
-    }
+    //}
      
     usSpinnerService.stop('spinner-1');
 
