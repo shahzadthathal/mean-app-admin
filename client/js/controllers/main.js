@@ -9,7 +9,7 @@
  */
 
   
-var MainCtrl =   clientApp.controller('MainCtrl', ['$scope', '$http', 'AppConfig', 'usSpinnerService', '$rootScope', 'MetaService', '$localStorage', function ($scope, $http, AppConfig, usSpinnerService, $rootScope, MetaService, $localStorage) {
+var MainCtrl =   clientApp.controller('MainCtrl', ['$scope', '$http', 'AppConfig', 'usSpinnerService', '$rootScope', 'MetaService', '$localStorage', 'getData', function ($scope, $http, AppConfig, usSpinnerService, $rootScope, MetaService, $localStorage, getData) {
 
     usSpinnerService.spin('spinner-1');
     $scope.shopName = AppConfig.APP_NAME;
@@ -17,11 +17,14 @@ var MainCtrl =   clientApp.controller('MainCtrl', ['$scope', '$http', 'AppConfig
     $rootScope.metaservice = MetaService;
     $rootScope.metaservice.set($scope.shopName+" | Products","Product description","products,webshop");
 
-    $scope.products = [];
+    //console.log(getData);
+    //$scope.products = [];
+    $scope.products = getData.products;
     $scope.productParentCats = [];
     $scope.productSubCats = [];
 
-    $scope.homePagePosts = [];
+    //$scope.homePagePosts = [];
+    $scope.homePagePosts = getData.blogs
     $scope.blogParentCats = [];
     $scope.blogSubCats = [];    
 
@@ -33,11 +36,12 @@ var MainCtrl =   clientApp.controller('MainCtrl', ['$scope', '$http', 'AppConfig
     else{
     */    
 
-         $http.get(AppConfig.SERVERURL + '/api/blog/list')
+        /* $http.get(AppConfig.SERVERURL + '/api/blog/list')
           .then(function (result) {
             $scope.homePagePosts =  result.data;
             $localStorage.homePagePosts = result.data;
         });
+        */
         
     //}
 
@@ -46,11 +50,11 @@ var MainCtrl =   clientApp.controller('MainCtrl', ['$scope', '$http', 'AppConfig
     }
     else{
     */ 
-         $http.get(AppConfig.SERVERURL + '/api/product/list')
+         /*$http.get(AppConfig.SERVERURL + '/api/product/list')
           .then(function (result) {
             $scope.products =  result.data;
             $localStorage.products = result.data;
-        });
+        });*/
         
     //}
 
@@ -61,6 +65,7 @@ var MainCtrl =   clientApp.controller('MainCtrl', ['$scope', '$http', 'AppConfig
     else{
     */    
 
+        /*
         $http.get(AppConfig.SERVERURL + '/api/setting/list')
         .then(function(result){
              
@@ -74,6 +79,8 @@ var MainCtrl =   clientApp.controller('MainCtrl', ['$scope', '$http', 'AppConfig
                 };
                 $localStorage.socialMedia = $scope.socialMedia;
         });
+
+        */
 
     //}
 

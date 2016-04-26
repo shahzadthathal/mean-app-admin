@@ -32,11 +32,29 @@ var clientApp = angular.module('clientApp', [
     $routeProvider
       .when('/', {
         templateUrl: 'partials/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+         resolve: {
+                    getData: ['productService', 'blogService', function (productService, blogService) {
+                         var dataArr = {};
+                         return productService.getProducts()
+                            .then(function (products) {
+                              dataArr.products = products;
+                              return blogService.getBlogs();
+                            }).then(function(blogs){
+                              dataArr.blogs = blogs;
+                              return dataArr;
+                            });
+                    }]
+                }
       })
       .when('/blog', {
         templateUrl: 'partials/blog.html',
-        controller: 'BlogCtrl'
+        controller: 'BlogCtrl',
+        resolve:{
+              getData:['blogService', function(blogService){
+                return blogService.getBlogs();
+              }]
+        }
       })
       .when('/payment-methods', {
         templateUrl: 'partials/payment-methods.html',

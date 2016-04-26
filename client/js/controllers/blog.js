@@ -9,18 +9,19 @@
  */
 
   
-var BlogCtrl =   clientApp.controller('BlogCtrl', ['$scope', '$route', '$http', 'AppConfig', 'usSpinnerService', '$rootScope', 'MetaService', '$localStorage', function ($scope, $route, $http, AppConfig, usSpinnerService, $rootScope, MetaService, $localStorage) {
+var BlogCtrl =   clientApp.controller('BlogCtrl', ['$scope', '$route', '$http', 'AppConfig', 'usSpinnerService', '$rootScope', 'MetaService', '$localStorage', 'getData', function ($scope, $route, $http, AppConfig, usSpinnerService, $rootScope, MetaService, $localStorage, getData) {
 
     usSpinnerService.spin('spinner-1');
     $scope.shopName = AppConfig.APP_NAME;
     $rootScope.metaservice = MetaService;
     $rootScope.metaservice.set($scope.shopName+"| Blog","Our blog","blog");
 
-    $scope.blogs = [];
+    //$scope.blogs = [];
+    $scope.blogs = getData;
     $scope.blogParentCats = [];
     $scope.blogSubCats = [];    
 
-	$scope.products = [];
+	  $scope.products = [];
     $scope.imageUrl = AppConfig.SERVERURL+'/images/';
     
     /*
@@ -30,11 +31,13 @@ var BlogCtrl =   clientApp.controller('BlogCtrl', ['$scope', '$route', '$http', 
     else{
 
       */
-         $http.get(AppConfig.SERVERURL + '/api/blog/list')
+        /*
+        $http.get(AppConfig.SERVERURL + '/api/blog/list')
           .then(function (result) {
             $scope.blogs =  result.data;
             $localStorage.blogs = result.data;
         });
+        */
         
     //}
 
