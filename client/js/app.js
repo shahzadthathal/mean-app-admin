@@ -38,10 +38,10 @@ var clientApp = angular.module('clientApp', [
                          var dataArr = {};
                          return productService.getProducts()
                             .then(function (products) {
-                              dataArr.products = products;
+                              dataArr.products = products.data;
                               return blogService.getBlogs();
                             }).then(function(blogs){
-                              dataArr.blogs = blogs;
+                              dataArr.blogs = blogs.data;
                               return dataArr;
                             });
                     }]
@@ -52,7 +52,10 @@ var clientApp = angular.module('clientApp', [
         controller: 'BlogCtrl',
         resolve:{
               getData:['blogService', function(blogService){
-                return blogService.getBlogs();
+                return blogService.getBlogs()
+                      .then(function(blogs){
+                        return blogs.data;
+                      });
               }]
         }
       })
