@@ -3,7 +3,7 @@
 var Services = require('../services');
 
 module.exports.list = function(req, res){
-	 Services.BlogSrvc.list()
+	 Services.BlogSrvc.list(req)
 	 .then( function(results){
 			 res.json(results);
 	 });
@@ -16,6 +16,15 @@ module.exports.detail = function(req, res){
 		res.json(result);
 	});
 }
+
+module.exports.detailById = function(req, res){
+
+	Services.BlogSrvc.detailById(req.params.id)
+	.then(function(result){
+		res.json(result);
+	});
+}
+
 
 module.exports.listbycategory = function(req, res){
 	

@@ -6,15 +6,29 @@
   var Services = require('./common-service.js');
 
   
-function list() {
-	return Promise.denodeify(Models.CategoryModel.find.bind(Models.CategoryModel))()
-    .then(function (results) {
-      return results;
-    });
+function list(req) {
+  var list = {};
+
+   return Models.CategoryModel.count()
+         .then(function(total){
+          list.recordsTotal = total;
+          list.recordsFiltered = total;
+          return Models.CategoryModel.find().skip(req.query.start).limit(req.query.length).sort({_id:-1});
+         })
+         .then(function(results){
+           
+           list.draw = req.query.draw;
+           list.data = results;
+           return list;
+         });
 }
 
-
-
+function detailById(id){
+     return get(id)
+          .then(function(category){
+            return category;
+          });
+}
 
 function categoryListByType(type){ 
   return Promise.denodeify(Models.CategoryModel.find.bind(Models.CategoryModel))({type:type})
@@ -133,6 +147,7 @@ function getBySlug(slug){
 
 module.exports = {
 	list:list,
+  detailById:detailById,
   categoryListByType:categoryListByType,
   parentCatList:parentCatList,
   parentProductCatList:parentProductCatList,

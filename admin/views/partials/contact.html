@@ -30,33 +30,10 @@
                 <div class="panel-body">
 
                     <div class="dataTable_wrapper">
-                    <table datatable="ng" class="table table-striped table-bordered table-hover">
-                        <thead>
-                        <tr>
-                            <th>SN</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Subject</th>
-                            <th>Message</th>                            
-                            <th> Actions </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="cntct in contacts">
-                            <td>{{$index+1}}</td>
-                            <td>{{ cntct.name }}</a></td>							
-                            <td>{{ cntct.email }}</td>  
-                             <td>{{ cntct.subject }}</a></td>                          
-                            <td>{{ cntct.message }}</td>                            
-                            <td>
- <button class="btn btn-success btn-sm" type="button" ng-click="showModal(cntct)">
- <i class="fa fa-pencil"></i> Update</button>
- <button class="btn btn-danger btn-sm" type="button" ng-click="deleteItem(cntct)">
-                          <i class="fa fa-trash-o"></i> Delete</button>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                   
+        <table datatable=""  dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance"  class="table table-striped table-bordered table-hover">                        
+                     </table>
+
                     </div>
                 </div>
                 </div>

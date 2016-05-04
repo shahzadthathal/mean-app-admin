@@ -5,11 +5,26 @@ var Promise = require('promise');
 var Models  =  require('../models');
 var Services = require('./common-service.js');
 
-function list() {
-    return Promise.denodeify(Models.TagModel.find.bind(Models.TagModel))()
-    .then(function (tags) {
-      return tags;
-    });
+function list(req) {
+     var list = {};
+     return Models.TagModel.count()
+         .then(function(total){
+          list.recordsTotal = total;
+          list.recordsFiltered = total;
+          return Models.TagModel.find().skip(req.query.start).limit(req.query.length).sort({_id:-1});
+         })
+         .then(function(results){           
+           list.draw = req.query.draw;
+           list.data = results;
+           return list;
+         });
+}
+
+function detailById(id){
+     return get(id)
+          .then(function(blog){
+            return blog;
+          });
 }
 
 function detail(tag){
@@ -85,6 +100,7 @@ function get(id) {
 module.exports = {
 	list:list,
 	detail:detail,
+  detailById:detailById,
 	create:create,
 	getByTag:getByTag,
   update:update,

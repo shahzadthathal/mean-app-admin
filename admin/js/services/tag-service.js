@@ -1,5 +1,11 @@
 adminApp.factory('TagSrvc', function ($http) {
   return {
+    detail:function(id){
+      return $http.get('/api/tag/detail-by-id/'+ id)
+      .then(function (result) {
+        return result.data;
+      });
+    },
     getTags: function () {
       return $http.get('/api/tag/list')
       .then(function (result) {
@@ -24,8 +30,8 @@ adminApp.factory('TagSrvc', function ($http) {
         return result.data;
       });
     },
-    delete: function (tag) {
-      return $http.delete('/api/tag/delete/' + tag._id, tag)
+    delete: function (id) {
+      return $http.delete('/api/tag/delete/' + id)
       .then(function () {
         return;
       }); 

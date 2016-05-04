@@ -19,6 +19,11 @@ adminApp.config(['$routeProvider', function($routeProvider){
 		   .when('/',{
 		   		redirectTo: '/admin/dashboard'
 		   })
+		   
+			.when('/admin/crud-manager',{
+				  templateUrl: 'partials/crud.html',
+				  controller: 'CrudCtrl'
+			})
 			.when('/admin', {
 				redirectTo: '/admin/dashboard'
 			})

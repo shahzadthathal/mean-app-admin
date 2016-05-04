@@ -4,11 +4,19 @@
 var Promise = require('promise');
 var Models  =  require('../models');
 
-function list() {
-    return Promise.denodeify(Models.ContactModel.find.bind(Models.ContactModel))()
-    .then(function (tags) {
-      return tags;
-    });
+function list(req) {
+    var list = {};
+   return Models.ContactModel.count()
+         .then(function(total){
+          list.recordsTotal = total;
+          list.recordsFiltered = total;
+          return Models.ContactModel.find().skip(req.query.start).limit(req.query.length).sort({_id:-1});
+         })
+         .then(function(results){           
+           list.draw = req.query.draw;
+           list.data = results;
+           return list;
+         });
 }
 
 function detail(id){
@@ -18,6 +26,12 @@ function detail(id){
           });
 }
 
+function detailById(id){
+     return get(id)
+          .then(function(blog){
+            return blog;
+          });
+}
 function create(data){
 
         	var ContactModel = new Models.ContactModel({
@@ -43,10 +57,10 @@ function update(id, data) {
             contact.subject = data.subject,
             contact.message = data.message
 
-            return Promise.denodeify(tag.save.bind(tag))()
+            return Promise.denodeify(contact.save.bind(contact))()
         })
-        .then(function (tag) {
-          return tag;
+        .then(function (contact) {
+          return contact;
         });
 
 }
@@ -69,6 +83,7 @@ function get(id) {
 module.exports = {
 	list:list,
 	detail:detail,
+  detailById:detailById,
 	create:create,
 	update:update,
   remove:remove,

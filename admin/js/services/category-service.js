@@ -1,5 +1,13 @@
 adminApp.factory('CategorySrvc', function ($http) {
   return {
+
+    detail:function(id){
+      return $http.get('/api/category/detail-by-id/'+ id)
+      .then(function (result) {
+        return result.data;
+      });
+    },
+    
     getCategory: function () {
       return $http.get('/api/category/list')
       .then(function (result) {
@@ -48,8 +56,8 @@ adminApp.factory('CategorySrvc', function ($http) {
         return result.data;
       });
     },
-    delete: function (category) {
-      return $http.delete('/api/category/delete/' + category._id, category)
+    delete: function (id) {
+      return $http.delete('/api/category/delete/' + id)
       .then(function () {
         return;
       }); 

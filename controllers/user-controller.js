@@ -41,7 +41,7 @@ module.exports.login = function(req, res){
 						};
 		// Grant access token for user requests
 		 //expiresIn: expressed in seconds or a string describing a time span rauchg/ms. Eg: 60, "2 days", "10h", "7d"
-		 var token = jwt.sign(newuser, secret, { expiresIn: '1h' }); 
+		 var token = jwt.sign(newuser, secret, { expiresIn: '20h' }); 
 	res.json({ token: token });	 
     //res.json({ token: token });
 

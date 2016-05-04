@@ -1,5 +1,12 @@
 adminApp.factory('PageSrvc', function ($http) {
   return {
+     detail:function(id){
+      return $http.get('/api/page/detail-by-id/'+ id)
+      .then(function (result) {
+        return result.data;
+      });
+    },
+
     getPages: function () {
       return $http.get('/api/page/list')
       .then(function (result) {
@@ -18,8 +25,8 @@ adminApp.factory('PageSrvc', function ($http) {
         return result.data;
       });
     },
-    delete: function (page) {
-      return $http.delete('/api/page/delete/' + page._id, page)
+    delete: function (id) {
+      return $http.delete('/api/page/delete/' + id)
       .then(function () {
         return;
       }); 

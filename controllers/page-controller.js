@@ -5,7 +5,7 @@ var Services = require('../services');
 
 module.exports.list = function(req, res){
 
-	Services.PageSrvc.list()
+	Services.PageSrvc.list(req)
 	.then(function(results){
 		res.json(results);
 	});
@@ -14,6 +14,14 @@ module.exports.list = function(req, res){
 module.exports.detail = function(req, res){
 
 	Services.PageSrvc.detail(req.params.slug)
+	.then(function(result){
+		res.json(result);
+	});
+}
+
+module.exports.detailById = function(req, res){
+
+	Services.PageSrvc.detailById(req.params.id)
 	.then(function(result){
 		res.json(result);
 	});

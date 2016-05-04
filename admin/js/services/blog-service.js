@@ -6,6 +6,12 @@ adminApp.factory('BlogSrvc', function ($http) {
         return result.data;
       });
     },
+    detail:function(id){
+      return $http.get('/api/blog/detail-by-id/'+ id)
+      .then(function (result) {
+        return result.data;
+      });
+    },
     getBlogsByTag: function(tag){
       return $http.get('/api/blog/list-by-tag/'+ tag)
       .then(function (result) {
@@ -24,8 +30,8 @@ adminApp.factory('BlogSrvc', function ($http) {
         return result.data;
       });
     },
-    delete: function (blog) {
-      return $http.delete('/api/blog/delete/' + blog._id, blog)
+    delete: function (id){
+      return $http.delete('/api/blog/delete/' + id)
       .then(function () {
         return;
       }); 

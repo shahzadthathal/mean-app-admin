@@ -30,29 +30,11 @@
                 <div class="panel-body">
 
                     <div class="dataTable_wrapper">
-                    <table datatable="ng" class="table table-striped table-bordered table-hover">
-                        <thead>
-                        <tr>
-                            <th>SN</th>
-                            <th>Title</th>
-                            <th>Slug</th>                    
-                            <th> Actions </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="page in pages">
-                            <td>{{$index+1}}</td>
-                            <td>{{ page.title }}</td>
-                            <td>{{ page.slug }}</td>                        
-                            <td>
- <button class="btn btn-success btn-sm" type="button" ng-click="showModal(page)">
- <i class="fa fa-pencil"></i> Update</button>
- <button class="btn btn-danger btn-sm" type="button" ng-click="deleteItem(page)">
-                          <i class="fa fa-trash-o"></i> Delete</button>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    
+                    <table datatable=""  dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance"  class="table table-striped table-bordered table-hover">                        
+                     </table>
+
+                     
                     </div>
                 </div>
                 </div>

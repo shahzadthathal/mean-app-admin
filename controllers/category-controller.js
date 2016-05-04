@@ -3,12 +3,19 @@
 var Services = require('../services');
 
 module.exports.list = function(req, res){
-	 Services.CategorySrvc.list()
+	 Services.CategorySrvc.list(req)
 	 .then( function(results){
 			 res.json(results);
 	 });
 }
 
+module.exports.detailById = function(req, res){
+
+	Services.CategorySrvc.detailById(req.params.id)
+	.then(function(result){
+		res.json(result);
+	});
+}
 
 
 module.exports.categoryListByType = function(req, res){

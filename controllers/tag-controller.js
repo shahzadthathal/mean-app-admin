@@ -10,7 +10,7 @@ module.exports.create = function(req, res){
 
 module.exports.list = function(req, res){
 
-	Services.TagSrvc.list()
+	Services.TagSrvc.list(req)
 	.then(function(results){
 		res.json(results);
 	});
@@ -23,6 +23,15 @@ module.exports.detail = function(req, res){
 		res.json(result);
 	});
 }
+
+module.exports.detailById = function(req, res){
+
+	Services.TagSrvc.detailById(req.params.id)
+	.then(function(result){
+		res.json(result);
+	});
+}
+
 
 module.exports.update = function (req, res) {
 

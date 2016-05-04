@@ -4,12 +4,35 @@
   var Promise = require('promise');
   var Models = require('../models');
   var Services = require('./common-service.js');
+
+
+
+function list(req) {
+    var list = {};
+
+    //console.log(req.query.start);
+    //console.log(req.query.length);
+    //console.log(req.query.draw);
+
+    return Models.ProductModel.count()
+         .then(function(total){
+          list.recordsTotal = total;
+          list.recordsFiltered = total;
+          return Models.ProductModel.find().skip(req.query.start).limit(req.query.length).sort({_id:-1});
+         })
+         .then(function(results){
+           
+           list.draw = req.query.draw;
+           list.data = results;
+           return list;
+         });
+      
   
-function list() {
-	return Promise.denodeify(Models.ProductModel.find.bind(Models.ProductModel))()
+	/*return Promise.denodeify(Models.ProductModel.find.bind(Models.ProductModel)) ({},{limit:2})
     .then(function (results) {
       return results;
     });
+    */
 }
 function detail(slug){
     return getBySlug(slug)
@@ -17,6 +40,15 @@ function detail(slug){
             return product;
           });
 }
+
+
+function detailById(id){
+     return get(id)
+          .then(function(product){
+            return product;
+          });
+}
+
 
 function listByCategory(cateid){
    return Promise.denodeify(Models.ProductModel.find.bind(Models.ProductModel))({category:cateid})
@@ -125,6 +157,7 @@ function getBySlug(slug){
 module.exports = {
 	list:list,
   detail:detail,
+  detailById:detailById,
   listByCategory:listByCategory,
   listBySubCategory:listBySubCategory,
 	create:create,
