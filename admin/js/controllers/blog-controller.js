@@ -216,7 +216,7 @@ adminApp.controller('BlogModalInstanceCtrl', function ($scope, blog, $http, $uib
 		  	return TagSrvc.getTags();
 		  })
 		  .then(function(tags){
-		  	$scope.tagList = tags;
+		  	$scope.tagList = tags.data;
 		  	return $scope.tagList;
 		  });
 

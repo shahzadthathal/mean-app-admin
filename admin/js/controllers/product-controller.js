@@ -216,7 +216,8 @@ adminApp.controller('ProductModalInstanceCtrl', function ($scope, product, $http
 		  	return TagSrvc.getTags();
 		  })
 		  .then(function(tags){
-		  	$scope.tagList = tags;
+		  	
+		  	$scope.tagList = tags.data;
 		  	return $scope.tagList;
 		  });
 

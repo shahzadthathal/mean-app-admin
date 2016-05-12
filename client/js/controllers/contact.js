@@ -25,8 +25,10 @@
         return $sce.trustAsHtml(html_code);
     };
 
+
     $scope.result = 'hidden'
     $scope.resultMessage;
+    $scope.resultMessageClass;
     $scope.formData; //formData is an object holding the name, email, subject, and message
     $scope.submitButtonDisabled = false;
     $scope.submitted = false; //used so that form errors are shown only after the form has been submitted
@@ -43,13 +45,13 @@
                     if(result){
                         $scope.submitButtonDisabled = true;
                         $scope.resultMessage = 'Contact request submitted successfully, we will contact you asap!';
-                        $scope.result='bg-success';
+                        $scope.resultMessageClass = 'successbox';                        
                         $scope.formData = null;
                     }
                     else {
                         $scope.submitButtonDisabled = false;
                         $scope.resultMessage = result.message;
-                        $scope.result='bg-danger';
+                        $scope.resultMessageClass = 'errorbox';     
                     }
                     usSpinnerService.stop('spinner-1');
                 });
